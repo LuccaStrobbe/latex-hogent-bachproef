@@ -119,7 +119,7 @@ Een andere veelbelovende ontwikkeling is het gebruik van kunstmatige intelligent
 Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem}, maakt gebruik van reinforcement learning (RL) om 
 teststrategieën te leren, te reproduceren en te optimaliseren. Door de reconnaissance-fase te modelleren als een partially observed 
 Markov decision process (POMDP) kan IAPTS effectievere en consistentere resultaten leveren dan menselijke testers. Daarnaast biedt 
-dit systeem de mogelijkheid om kennis en strategieën uit eerdere tests opnieuw te gebruiken, wat de efficiëntie verder verhoogt.
+dit systeem de mogelijkheid om kennis en strategieën uit eerdere tests opnieuw te gebruiken, wat de efficiëntie verder verhoogt.\autocite{Ghanem}
 
 
 
@@ -168,6 +168,76 @@ dit systeem de mogelijkheid om kennis en strategieën uit eerdere tests opnieuw 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
+
+
+Een combinatie van methoden zullen worden gebruikt om de onderzoeksvraag te beantwoorden, er zal onderandere gebruik 
+gemaakt worden van de literatuurstudie,onderzoeken en vergelijkende analyses. hieronder zijn de stappen beschreven:
+
+\subsection{Literatuurstudie}
+
+De literatuurstudie zal de basis vormen voor dit onderzoek. door een grondige analyse te maken van de reeds bestaande tools en studies,
+die gebruikt worden in de reconnaissance-fase van penetratietests, kan er een overzicht gemaakt worden van de huidige situatie.
+hierbij wordt er rekening gehouden met de vindingen van~\textcite{Shah,Kothia} die de voordelen en beperpingen aantoonen binnen de reconnaissance-fase.
+Ook zal er rekening gehouden worden met nieuwe technologieen zoals die van ~\textcite{Ghanem,Hoang} waar er een gebruikt wordt gemaakt van
+reinforcement learning (RL),Intelligent Automated Penetration Testing System (IAPTS) en POMDP-modellen. De implementatie van bestaande 
+tools en frameworks zoals AutoRecon en Recon-ng zal ook onderzocht worden~\autocite{Shebli}.
+
+De resultaten van deze literatuurstudie zal gebruikt kunnen worden voor een kader te schetsen voor de verdere ontwikkleing van dit onderzoek.
+
+\subsection{Experimenteel onderzoek}
+
+Om de effectieviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Een Proof of Concept (PoC) opgestart worden. 
+Dit omvat dat er een workfrow zal worden geimplimeteerd met behulp van de automatisatie tools zoals AutoRecon en Recon-ng. Deze 
+Workflow zal getest worden op een gesimuleerd netwerk waar er bekende kwetsbaarheden op staan om via deze data de snelheid, 
+nauwkeurigheid en consistentie te meten. Met behulp van deze data kunnen we nieuwe technolgieent intigreren om onze automatisatie te optimaliseren
+zoals reinforcement learning (RL) om patronen te herkennen.
+
+Aan de hand van de verzamelde informatie zzal het onderzoek geëvalueerd worden aan de hand van nauwkeurigheid, tijdswinst en consistentie.
+
+\subsection{Vergelijkende studie}
+
+een vergelijkende analyse zal worden uitgevoert om de toegevoegde waarde van de automatisering te bepalen. We zullen dit in 3
+stappen kunnen uitvoeren:
+
+\begin{itemize}
+    \item Een handmatig uitgevoerde reconnaissance-fase, waarbij menselijke testers traditionele methoden toepassen.
+    \item Een volledig geautomatiseerde aanpak met behulp van de PoC.
+    \item Een hybride aanpak die handmatige en geautomatiseerde methoden combineert.
+\end{itemize}
+
+De resultaten van de analyse zullen we vergelijken op basis van enkele criteria zoals tijdsduur, naukeurigheid en de aantal gevonden kwetsbaarheden.
+
+\subsection{Tools en hulpmiddelen}
+
+in dit onderzoek zullen we gebruikmaken van deze tools: 
+
+\begin{itemize}
+    \item Voor de verzamaling van informatie wordt er gebruik gemaakkt van Open-source frameworks zoals AutoRecon, Nmap en Recon-ng.
+    \item Python of andere talen voor het ontwerpen van de Poc
+    \item De Simulatie zullen we een omgeving als Metasploit gebruiken of een lokaal virtueel gesimuleert netwerk
+\end{itemize}
+
+de machine learning libraries (bijv. TensorFlow of PyTorch) zullen ook gebruikt worden voor de experimenten met reinforcement learning.
+
+
+\subsection{Planning en deliverables}
+Het onderzoek wordt uitgevoerd in vier fasen:
+\begin{enumerate}
+    \item \textbf{Literatuurstudie} (3 weken): Analyse van relevante bronnen en identificatie van onderzoekshiaten.
+    \item \textbf{Proof of Concept} (5 weken): Ontwikkeling en implementatie van een geautomatiseerde workflow.
+    \item \textbf{Experimentele evaluatie} (4 weken): Testen van de PoC op gesimuleerde omgevingen.
+    \item \textbf{Vergelijkende analyse en rapportage} (3 weken): Vergelijken van de resultaten en schrijven van het eindrapport.
+\end{enumerate}
+
+
+
+De belangrijkste deliverables is een onderzoeksrapport met aanbevelingen voor automatisering in de reconnaissance-fase.
+en Een werkende Proof of Concept die de voordelen van automatisering demonstreert.
+
+
+
+
+
 
 % Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
 
