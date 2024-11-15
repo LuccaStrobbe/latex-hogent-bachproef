@@ -43,8 +43,6 @@ De doelgroep van mijn onderzoek zijn IT’ers die werken met penetratietests, zo
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-\autocite{SabiEtAl2016}
-
 \subsection{reconnaissance in penetratietests}
 
 Reconnaissance-fase, of de verkenningsfase, deze fase binnen penetratietests is een cruciale en vaak 
@@ -88,25 +86,43 @@ AutoRecon, Recon-ng, Shodan en Nmap. Deze tools zijn ontwikkeld om robust te zij
 Door Automatisering kan de efficiëntie en de snelheid van de reconnaissance fase aanzienlijk verhoogt worden. Er zijn vele tools om 
 snel en efficiënt een netwerk te schannen en de kwedsbaarheden te kunnen detecteren, door de implementatie van automatisatie kunnen 
 organisaties sneller en kosteneffectiever test kunnen uitvoeren. Echter, door de automatisatie kan het altijd
-zijn dat deze tools niet alle kwetsbaarheden kan vinden en dit kan later voor problemen zorgen.~\autocite{peris2023}
+zijn dat deze tools niet alle kwetsbaarheden kan vinden en dit kan later voor problemen zorgen.~\autocite{peris}
 
 Meer diepgaande scans worden vaak handmatig gedaan, deze zijn flexibel en de kan je meer doen als een geautomatiseerde test. 
 Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden tegugvinden dat niet makkelijk te detecteren valt bij 
-een geautomatiseerde tool.~\autocite{techtarget2023} Deze hadmatige test kunnen ook zeer tijdrovend zijn en kan van enkele 
+een geautomatiseerde tool.~\autocite{techtarget} Deze hadmatige test kunnen ook zeer tijdrovend zijn en kan van enkele 
 weken tot enkele maaden duren afhankelijk van de complexiteit ~\autocite{Shah}.
 
+Vaak wordt een keuze gemaake van tussen handmatig en een geautomatiseerde penetratietest, dit hangt hangt af van de specefieke 
+vereisten van de oranisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde penetratietest te maken maar wordt 
+een hybryde model vaker gebruikt, dit is vaak de ideale oplossing waarbij automatisatie em menselijke ervaring elkaar kunnen 
+aanvullen voor een efficiënte Reconnaissance-fase~\autocite{techtarget}.
 
-**tot hier was ik bezig**
+\subsection{Efficiëntie en uitdagingen}
 
-% In plaats van te kiezen voor een puur handmatige of geautomatiseerde benadering
+Momenleel zijn er nog enkele uitdagingnen bij penetratietests,zoals \textcite{Fugkeaw} beschrijft dat er nog te veel wordt 
+vertrouwd en afhankelijk zijn op de experten van het vak bij het beoorderelen van de al dan niet geautomatizeerde kwetsbaarheden. 
+Bij vele methoden wordt er vaak nog op gerekend dat er een menselijke input bij het maken van een vulnerability assessment (VA) 
+bij het analyseren en prioriteren. Dit verhoogt da kans op menselijke fouten en is meer tijdintensief, ook zijn de testen vaak 
+inconsistent door de individuele voorkeren van de penetratietester volgens\textcite{Ghanem}.
 
-% er wordt vaak een keuze gemaake van puur handmatige 
+Binnen pentesting worden er nog vaak nieuwe technologieen gebruikt, een van deze nieuwe technologieen is het gebruik van 
+kunstmatige intelligentie> Zoals Het Intelligent Automated Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem},
+hier wordt er gebruik gemaakt van reinforcement learning (RL) om testpartonen te leren en te optimaliseren. Als we deze technologie 
+gebruiken in de reconnaissance-fase samen met de wiskundige model om beslisinge te maken de Partially observed Markov decision process (POMDP)
+kunnen we naukeurigere resultaten behalen als menselijke testers.
+Echter blijft het belangerijk dat er een juiste balans zit tussen automatisateie en menselijke controle. Menselijke testers hebben vaker 
+meer creativiteit em intuïtie dat moeilijk is te vervangen door een geautomatiseerde tool. Daarom blijft het belangerijk om onderzoekt ted 
+doen naar hybryde modelen.
 
-% De keuze tussen handmatige en geautomatiseerde penetratietests hangt af van de specifieke vereisten van de organisatie en de 
-% aard van de systemen die getest worden. Automatisering kan de snelheid en frequentie van de tests verbeteren, terwijl handmatige 
-% tests de mogelijkheid bieden om complexere kwetsbaarheden en logische fouten te ontdekken. De ideale oplossing voor de meeste 
-% organisaties is een gecombineerde benadering, waarbij automatisering en menselijke expertise elkaar aanvullen voor een meer 
-% gedetailleerde en efficiënte beveiligingsanalyse~\autocite{techtarget2023}.
+Een andere veelbelovende ontwikkeling is het gebruik van kunstmatige intelligentie in pentesting. Het Intelligent Automated 
+Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem}, maakt gebruik van reinforcement learning (RL) om 
+teststrategieën te leren, te reproduceren en te optimaliseren. Door de reconnaissance-fase te modelleren als een partially observed 
+Markov decision process (POMDP) kan IAPTS effectievere en consistentere resultaten leveren dan menselijke testers. Daarnaast biedt 
+dit systeem de mogelijkheid om kennis en strategieën uit eerdere tests opnieuw te gebruiken, wat de efficiëntie verder verhoogt.
+
+
+
 
 
 
