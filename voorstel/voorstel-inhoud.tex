@@ -45,8 +45,7 @@ De doelgroep van mijn onderzoek zijn IT’ers die werken met penetratietests, zo
 
 \autocite{SabiEtAl2016}
 
-
-\subsection{Inleiding tot reconnaissance in penetratietests}
+\subsection{reconnaissance in penetratietests}
 
 Reconnaissance-fase, of de verkenningsfase, deze fase binnen penetratietests is een cruciale en vaak 
 een tijdrovende stap. Deze fase is vaak de meest tijdrovende stap, dit kan weken of zelfs maanden 
@@ -61,6 +60,54 @@ mogelijk informatie verzamelen van het doelwit. pasieven Methode is het verzalem
 zonder dat er dicect conct moet worden gemaakt met het doelwit, actieve methoden zijn dan wel direct
 verbonden met het doelwit door te gaan scannen met tools zoals Nmap, rechtstreeks contact maken met 
 het doelwit om open poorten te detecteren~\autocite{Shah}.
+
+\subsection{Automatisering}
+
+Hoang~\textcite{Hoang} heeft een geautomatiseerde aanpak voor penetratietesten waar er gebruik wordt gemaakt van deep reinforcement 
+learning (RL). Zijn model is gebaseerd op het A3C-algoritme, dit algorithme leert zichzelf de geschikte acties te herkennen, dit kan 
+gaan over de payloads kiezen en de juiste kwetsbaarheden benutten. Zijn  methode is gericht op drie functies: informatieverzameling, 
+exploitatie en rapportage. Hoang toont daarmee aan dat gebruik van deze aanpak niet enkel maat presatie verbetert maar ook de resultaten 
+kan opslaan om hiermee later dit toe te passen op nieuwe situaties.~\autocite{Hoang2023}.
+
+Volgens Kothia~\textcite{Kothia} kan de eerste fase binnen pentesting in reconnaissance-face waar er data wordt verzameld veel 
+eficienter gebeuren met behulp van automatisatie. Er zijn vele open source tools beschikbaar maar helaas vraagt het gebruik van deze 
+tools nog veel handmatige inspanning im deze tools te intigreren. Kothia heeft een geautomatiseerde aanpak gecrieert om deze tools
+efficiënter te intigreren. De resultaten van de studie wees er op dat deze implementatie voor een snellere zorgde,tijd 
+bespaarde en zorgde voor een betere en nauwkeurigere uitvoering in de reconnaissance-face\autocite{Kothia2023}.
+
+
+\subsection{Tools en Frameworks}
+
+Om penetratietests te automatiseren voor de reconnaissance-fase zijn er verschillende frameworks en tools die beschikbaar zijn om 
+efficiënt en snel informatie kan verzalelen. Voornamelijk zijn de meeste van deze tools open source, enkele van deze tools zijn 
+AutoRecon, Recon-ng, Shodan en Nmap. Deze tools zijn ontwikkeld om robust te zijn en het process Reconnaissance te versnellen~\autocite{Shebli}.
+
+
+\subsection{Vergelijkingen}
+
+Door Automatisering kan de efficiëntie en de snelheid van de reconnaissance fase aanzienlijk verhoogt worden. Er zijn vele tools om 
+snel en efficiënt een netwerk te schannen en de kwedsbaarheden te kunnen detecteren, door de implementatie van automatisatie kunnen 
+organisaties sneller en kosteneffectiever test kunnen uitvoeren. Echter, door de automatisatie kan het altijd
+zijn dat deze tools niet alle kwetsbaarheden kan vinden en dit kan later voor problemen zorgen.~\autocite{peris2023}
+
+Meer diepgaande scans worden vaak handmatig gedaan, deze zijn flexibel en de kan je meer doen als een geautomatiseerde test. 
+Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden tegugvinden dat niet makkelijk te detecteren valt bij 
+een geautomatiseerde tool.~\autocite{techtarget2023} Deze hadmatige test kunnen ook zeer tijdrovend zijn en kan van enkele 
+weken tot enkele maaden duren afhankelijk van de complexiteit ~\autocite{Shah}.
+
+
+**tot hier was ik bezig**
+
+% In plaats van te kiezen voor een puur handmatige of geautomatiseerde benadering
+
+% er wordt vaak een keuze gemaake van puur handmatige 
+
+% De keuze tussen handmatige en geautomatiseerde penetratietests hangt af van de specifieke vereisten van de organisatie en de 
+% aard van de systemen die getest worden. Automatisering kan de snelheid en frequentie van de tests verbeteren, terwijl handmatige 
+% tests de mogelijkheid bieden om complexere kwetsbaarheden en logische fouten te ontdekken. De ideale oplossing voor de meeste 
+% organisaties is een gecombineerde benadering, waarbij automatisering en menselijke expertise elkaar aanvullen voor een meer 
+% gedetailleerde en efficiënte beveiligingsanalyse~\autocite{techtarget2023}.
+
 
 
 % Daarbij vereist de informatieverzamelingsfase een wetenschappelijke aanpak gecombineerd met
