@@ -120,7 +120,7 @@ aanvullen voor een efficiënte Reconnaissance-fase ~\autocite{techtarget}.
 % Echter blijft het belangrijk dat er een juiste balans zit tussen automatisatie en menselijke controle. Menselijke testers hebben vaker meer creativiteit en intuïtie wat moeilijk is te vervangen door een geautomatiseerde tool. Daarom blijft het belangrijk om te blijven onderzoeken naar hybride modelen.
 
 Momenteel zijn er nog enkele uitdagingen bij pentests, zoals ~\textcite{Fugkeaw} beschrijft, dat er nog te veel wordt vertrouwd 
-op de experten van het vak bij het beoordelen van de al dan niet geautomatiseerde Reconnaissance-fase.Bij vele methoden wordt er vaak nog op gerekend dat er een menselijke input is bij het maken van een vulnerability assessment (VA) bij het analyseren en prioriteren. Dit verhoogt de kans op menselijke fouten en is tijdintensief, ook zijn de testen vaakinconsistent door de individuele voorkeuren van de pentester volgens ~\textcite{Ghanem}.
+op de experten van het vak bij het beoordelen van de al dan niet geautomatiseerde Reconnaissance-fase. Bij vele methoden wordt er vaak nog op gerekend dat er een menselijke input is bij het maken van een vulnerability assessment (VA) bij het analyseren en prioriteren. Dit verhoogt de kans op menselijke fouten en is tijdintensief, ook zijn de testen vaakinconsistent door de individuele voorkeuren van de pentester volgens ~\textcite{Ghanem}.
 Binnen pentesting worden er nog vaak nieuwe technologieën ontdekt en gebruikt, één van deze nieuwe technologieën is het gebruik van kunstmatige intelligentie. Zoals Het Intelligent Automated Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem},hier wordt er gebruik gemaakt van reinforcement learning (RL) om testpatronen te leren en te optimaliseren. Als we deze technologie gebruiken in de reconnaissance-fase samen met het wiskundige model om beslissingen te maken; de Partially observed Markov decision process (POMDP) kunnen we nauwkeurigere resultaten behalen. Echter blijft het belangrijk dat er een juiste balans zit tussen automatisatie en menselijke controle. Menselijke testers hebben vaker meer creativiteit en intuïtie wat moeilijk is te vervangen door een geautomatiseerde tool. Daarom blijft het belangrijk om te blijven onderzoeken naar hybride modelen.
 
 
@@ -170,16 +170,18 @@ Dit omvat dat er een workflow zal worden geïmplementeerd met behulp van de auto
 Workflow zal getest worden op een gesimuleerd netwerk waar er bekende kwetsbaarheden op staan om via deze data de snelheid,
 nauwkeurigheid en consistentie te meten. Met behulp van deze data kunnen we nieuwe technologieën integreren om onze automatisatie te optimaliseren
 zoals reinforcement learning (RL) om patronen te herkennen.
-Aan de hand van de verzamelde informatie zal het onderzoek geëvalueerd worden aan de hand van nauwkeurigheid, tijdswinst en consistentie.
+Aan de hand van de verzamelde informatie zal het onderzoek geëvalueerd worden op nauwkeurigheid, tijdswinst en consistentie.
 
 
 %----------------------------------------------------------------------------------------------------------
 \subsection{Meetbare Criteria voor Analyse}
 
 Om de resutaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
-- De nodige tijd voor informatieverzameling.
-- De Nauwkeurigheid van de ondekte gegevens.
-- Het aantal gevonden unieke kwetsbaarheden.
+\begin{itemize}
+    \item De nodige tijd voor informatieverzameling.
+    \item De Nauwkeurigheid van de ondekte gegevens.
+    \item Het aantal gevonden unieke kwetsbaarheden.
+\end{itemize}
 
 Ook zullen er frameworks zoals OSTTMM en OWASp testing gebruikt worden om de valideit van het onderzoek nog te vergroten.
 Deze richtlijnen en standaarden zal helpen om de resultaten van de PoC te vergelijken en te beoordelen.
