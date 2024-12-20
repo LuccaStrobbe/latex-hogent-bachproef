@@ -17,12 +17,12 @@
 
 Penetratietests(pentests) hebben een cruciale rol bij cybersecurity, waarbij cybersecurity en IT-professionals proberen in te breken in het intern netwerk 
 van een organisatie of bedrijf om toegang te krijgen tot het systeem, dit om te voorkomen dat er black hat hackers toegang kunnen krijgen tot hun systeem. 
-De eerste fase binnen dit proces in de reconnaissance-fase, waar er zo veel mogelijk data wordt verzamelt over het doelwit. Dit is een van de belangrijkste fases, 
+De eerste fase binnen dit proces in de reconnaissance-fase, waar er zo veel mogelijk data wordt verzameld over het doelwit. Dit is een van de belangrijkste fases, 
 aangezien deze fase de basis legt voor rest van de pentest. Als deze fase handmatig wordt uitgevoerd zal deze stap te veel tijd kosten. Met efficiëntie als doel zoekt 
 dit onderzoek naar geautomatiseerde tools om het handmatige te vervangen.
 Het doel van dit onderzoek is het vergelijken van de beschikbare tools en technieken om er de meest efficiënte uit te halen, weliswaar zonder kwaliteitsverlies van de verzamelde informatie.
 De doelgroep van mijn onderzoek zijn IT’ers die werken met pentests, zoals cybersecurity- en IT-professionals en bedrijven die regelmatig hun systemen testen op kwetsbaarheden. 
-Deze doelgroep is op zoek naar een betrouwbare tool dat efficiënt en een snelle werking heeft. 
+Deze doelgroep is op zoek naar een betrouwbare tool dat efficiënte en een snelle werking heeft. 
 %Deze literatuuronderzoek heeft betrekking op o.a.
 Om dit te onderzoeken zal ik een literatuuronderzoek doen naar enkele bestaande tools waaronder 
 AutoRecon, Recon-ng en Shodan, aangevuld met testen op pentest scenario’s om deze werking te analyseren en hun efficiëntie te vergelijken. Het eindresultaat van dit 
@@ -70,7 +70,7 @@ de actieve methode is wel direct verbonden met het doelwit, bijvoorbeeld door ge
 
 \subsection{Automatisering}
 
-~\textcite{Hoang} heeft een geautomatiseerde aanpak voor pentesten in hij deep reinforcement 
+~\textcite{Hoang} heeft een geautomatiseerde aanpak voor pentesten waarin hij deep reinforcement 
 learning (RL) gebruikt. Zijn model is gebaseerd op het A3C-algoritme. Dit algoritme leert zichzelf de geschikte acties aan, dit kan 
 gaan over het kiezen van de payloads en het benutten van de juiste kwetsbaarheden. Zijn methode is gericht op drie functies: informatie verzamelen, 
 exploitatie en rapportage. Hoang toont daarmee aan dat het gebruik van deze aanpak niet enkel de presatie verbetert, maar ook dat het systeem de resultaten 
@@ -102,7 +102,7 @@ Meer diepgaande scans worden vaak handmatig gedaan, deze zijn flexibeler dan een
 Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden terugvinden die niet makkelijk te detecteren vallen bij 
 een geautomatiseerde tool.~\autocite{techtarget} 
 
-Vaak wordt een keuze gemaake tussen een handmatige of een geautomatiseerde penettest, deze keuze hangt vaak af van de specefieke 
+Vaak wordt een keuze gemaak tussen een handmatige of een geautomatiseerde penettest, deze keuze hangt vaak af van de specifieke  
 vereisten van de oranisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde pentest te maken, maar wordt
 een hybride model vaker gebruikt. Dit is vaak de ideale oplossing waarbij automatisatie en menselijke ervaring elkaar kunnen 
 aanvullen voor een efficiënte Reconnaissance-fase~\autocite{techtarget}.
@@ -186,6 +186,14 @@ nauwkeurigheid en consistentie te meten. Met behulp van deze data kunnen we nieu
 zoals reinforcement learning (RL) om patronen te herkennen.
 Aan de hand van de verzamelde informatie zal het onderzoek geëvalueerd worden aan de hand van nauwkeurigheid, tijdswinst en consistentie.
 
+\subsection{Meetbare Criteria voor Analyse}
+Om de resutaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
+- De nodige tijd voor informatieverzameling.
+- De Nauwkeurigheid van de ondekete gegevens.
+- Het aantal unieke kwetsbaarheden en subdomeinen.
+
+Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect en efficiënt is.
+
 \subsection{Vergelijkende studie}
 
 Een vergelijkende analyse zal worden uitgevoerd om de toegevoegde waarde van de automatisering te bepalen. We zullen dit in 3 stappen kunnen uitvoeren:
@@ -203,9 +211,9 @@ De resultaten van de analyse zullen we vergelijken op basis van enkele criteria 
 In dit onderzoek zullen we gebruik maken van deze tools: 
 
 \begin{itemize}
-    \item Voor de verzamaling van informatie wordt er gebruik gemaakkt van Open-source frameworks waaronder AutoRecon, Nmap en Recon-ng.
+    \item Voor de verzamaling van informatie wordt er gebruik gemaakkt van Open-source frameworks waaronder AutoRecon, Nmap, Amass en Recon-ng.
     \item Python of andere talen voor het ontwerpen van de Poc
-    \item voor de Simulatie zullen we gebruik maken van een lokaal virtueel gesimuleert netwerk
+    \item voor de Simulatie zullen we gebruik maken van een lokaal virtueel gesimuleerd netwerk
 \end{itemize}
 
 De machine learning libraries (bijv. TensorFlow of PyTorch) zullen ook gebruikt worden voor de experimenten met reinforcement learning.
@@ -214,7 +222,7 @@ De machine learning libraries (bijv. TensorFlow of PyTorch) zullen ook gebruikt 
 Er zijn 4 fasen in het onderzoek:
 \begin{enumerate}
     \item \textbf{Literatuurstudie} (3 weken): Relevante bronnen zal worden geanalyseerd en de onderzoeksresultaten worden geïdentificeerd.
-    \item \textbf{Proof of Concept} (5 weken): De geautomatiseerde workflow wordt ontwikkeling en geimplementeerd.
+    \item \textbf{Proof of Concept} (5 weken): De geautomatiseerde workflow wordt ontwikkeld en geimplementeerd.
     \item \textbf{Experimentele evaluatie} (4 weken): De PoC wordt getest op een gesimuleerde omgevingen.
     \item \textbf{Vergelijkende analyse en rapportage} (3 weken): De resultaten vergelijken en het schrijven van het eindrapport.
 \end{enumerate}
