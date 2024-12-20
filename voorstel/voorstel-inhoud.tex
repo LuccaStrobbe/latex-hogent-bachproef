@@ -12,21 +12,25 @@
 % uitgewerkt (met medesturent VOORNAAM NAAM als mede-auteur).
 % 
 
+
+
+
 \section{Inleiding}%
 \label{sec:inleiding}
 
 Penetratietests(pentests) hebben een cruciale rol bij cybersecurity, waarbij cybersecurity en IT-professionals proberen in te breken in het intern netwerk 
 van een organisatie of bedrijf om toegang te krijgen tot het systeem, dit om te voorkomen dat er black hat hackers toegang kunnen krijgen tot hun systeem. 
-De eerste fase binnen dit proces in de reconnaissance-fase, waar er zo veel mogelijk data wordt verzameld over het doelwit. Dit is een van de belangrijkste fases, 
-aangezien deze fase de basis legt voor rest van de pentest. Als deze fase handmatig wordt uitgevoerd zal deze stap te veel tijd kosten. Met efficiëntie als doel zoekt 
-dit onderzoek naar geautomatiseerde tools om het handmatige te vervangen.
-Het doel van dit onderzoek is het vergelijken van de beschikbare tools en technieken om er de meest efficiënte uit te halen, weliswaar zonder kwaliteitsverlies van de verzamelde informatie.
-De doelgroep van mijn onderzoek zijn IT’ers die werken met pentests, zoals cybersecurity- en IT-professionals en bedrijven die regelmatig hun systemen testen op kwetsbaarheden. 
+De eerste fase binnen dit proces in de reconnaissance-fase, waar er zo veel mogelijk data wordt verzameld over het doelwit. Dit is één van de belangrijkste fases, 
+aangezien deze fase de basis legt voor rest van de pentest. Als deze fase handmatig wordt uitgevoerd zal deze stap te veel tijd kosten. 
+%Met efficiëntie als doel zoekt dit onderzoek naar geautomatiseerde tools om het handmatige te vervangen.
+het doel is om efficiëntie te bereiken door het vinden van geautomatiseerde tools om het handmatige proces te vervangen.
+Het onderzoek richt zich op het vergelijken van de beschikbare tools en technieken om er de meest efficiënte uit te halen, weliswaar zonder kwaliteitsverlies van de verzamelde informatie.
+De belangerijkste doelgroep waar mijn studie op richt zijn IT’ers die werken met pentests, zoals cybersecurity- en IT-professionals en bedrijven die regelmatig hun systemen testen op kwetsbaarheden. 
 Deze doelgroep is op zoek naar een betrouwbare tool dat efficiënte en een snelle werking heeft. 
 %Deze literatuuronderzoek heeft betrekking op o.a.
-Om dit te onderzoeken zal ik een literatuuronderzoek doen naar enkele bestaande tools waaronder 
-AutoRecon, Recon-ng en Shodan, aangevuld met testen op pentest scenario’s om deze werking te analyseren en hun efficiëntie te vergelijken. Het eindresultaat van dit 
-onderzoek zal bestaan uit aanbevelingen voor de intigratie en werking van deze tools.
+Om dit te analyseren zal ik een literatuuronderzoek doen naar enkele bestaande tools waaronder 
+AutoRecon, Recon-ng en Shodan, aangevuld met testen op pentest scenario’s om deze werking te analyseren en hun efficiëntie te vergelijken. 
+Het eindresultaat van dit onderzoek zal bestaan uit aanbevelingen voor de intigratie en werking van deze tools.
 
 
 % Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
@@ -55,9 +59,8 @@ onderzoek zal bestaan uit aanbevelingen voor de intigratie en werking van deze t
 
 \subsection{Reconnaissance in penetratietests}
 
-De reconnaissance-fase, of de verkenningsfase, is een fase binnen pentests die een cruciale rol heeft, maar vaak ook tijdrovend is. 
-Deze fase is vaak de meest tijdrovende stap, het kan weken tot maanden 
-duren, afhankelijk van de complexiteit van het target en de technieken die worden gebruikt~\autocite{Shah}. 
+De reconnaissance-fase, of de verkenningsfase, is een fase binnen pentests die een cruciale rol heeft, maar vaak ook de meest tijdrovende stap, 
+het kan weken tot maanden duren, afhankelijk van de complexiteit van het target en de technieken die worden gebruikt~\autocite{Shah}. 
 
 Het doel van de reconnaissance-fase binnen pentests is het creëren van een volledig beeld om de 
 kwetsbaarheden van het doelwit bloot te leggen. Dit process legt de basis voor de
@@ -73,13 +76,13 @@ de actieve methode is wel direct verbonden met het doelwit, bijvoorbeeld door ge
 ~\textcite{Hoang} heeft een geautomatiseerde aanpak voor pentesten waarin hij deep reinforcement 
 learning (RL) gebruikt. Zijn model is gebaseerd op het A3C-algoritme. Dit algoritme leert zichzelf de geschikte acties aan, dit kan 
 gaan over het kiezen van de payloads en het benutten van de juiste kwetsbaarheden. Zijn methode is gericht op drie functies: informatie verzamelen, 
-exploitatie en rapportage. Hoang toont daarmee aan dat het gebruik van deze aanpak niet enkel de presatie verbetert, maar ook dat het systeem de resultaten 
+exploitatie en rapportage. Hoang toont daarmee aan dat het gebruik van deze aanpak niet enkel de prestatie verbetert, maar ook dat het systeem de resultaten 
 kan opslaan om die toe te passen op nieuwe situaties.~\autocite{Hoang}.
 
 
-Volgens ~\textcite{Kothia} kan de eerste fase binnen pentesting in reconnaissance-face veel 
+Volgens ~\textcite{Kothia} kan de eerste fase binnen pentesting in reconnaissance-fase veel 
 efficiënter gebeuren met behulp van automatisatie. Er zijn veel open source tools beschikbaar, maar helaas vraagt het gebruik van deze 
-tools nog veel handmatige inspanning om ze te integreren. Kothia heeft een geautomatiseerde aanpak gecrieert om deze tools
+tools nog veel handmatige inspanning om ze te integreren. Kothia heeft een geautomatiseerde aanpak gecreëerd om deze tools
 efficiënter te integreren. De resultaten van de studie toonde aan dat deze implementatie, tijd 
 bespaarde en zorgde voor een betere en nauwkeurigere uitvoering~\autocite{Kothia}.
 
@@ -87,25 +90,25 @@ bespaarde en zorgde voor een betere en nauwkeurigere uitvoering~\autocite{Kothia
 \subsection{Tools en Frameworks}
 
 Om pentests te automatiseren, zijn er verschillende frameworks en tools beschikbaar om 
-efficiënt en snel informatie kan verzalelen. De meeste van deze tools zijn open source, waaronder 
-AutoRecon, Recon-ng, Shodan en Nmap. Deze tools zijn ontwikkeld om robust te zijn en het process Reconnaissance te versnellen~\autocite{Shebli}.
+efficiënt en snel informatie kan verzamelen. De meeste van deze tools zijn open source, waaronder 
+AutoRecon, Recon-ng, Shodan en Nmap. Deze tools zijn ontwikkeld om robust te zijn en het process van de Reconnaissance-fase te versnellen ~\autocite{Shebli}.
 
 
 \subsection{Vergelijkingen}
 
 Automatisering kan de efficiëntie en snelheid van de reconnaisance-fase verhogen. Er zijn vele tools die snel een netwerk kunnen scannen, 
-er de kwetsbaarheden uit kunnen halen en de kwedsbaarheden kunnen detecteren. Door automatisatie kunnen 
+er de kwetsbaarheden uit kunnen halen en de kwetsbaarheden kunnen detecteren. Door automatisatie kunnen 
 organisaties sneller en kosten-effectiever tests uitvoeren. Deze automatisatie kan echter wel leiden tot een kwaliteitsverlies, 
-d.w.z. dat mogelijks het systeem niet alle kwetsbaarheden vindt.~\autocite{peris}
+d.w.z. dat mogelijks het systeem niet alle kwetsbaarheden vindt. ~\autocite{peris}
 
 Meer diepgaande scans worden vaak handmatig gedaan, deze zijn flexibeler dan een geautomatiseerde test. 
 Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden terugvinden die niet makkelijk te detecteren vallen bij 
 een geautomatiseerde tool.~\autocite{techtarget} 
 
-Vaak wordt een keuze gemaak tussen een handmatige of een geautomatiseerde penettest, deze keuze hangt vaak af van de specifieke  
-vereisten van de oranisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde pentest te maken, maar wordt
+Vaak wordt er een keuze gemaakt tussen een handmatige of een geautomatiseerde penettest, deze keuze hangt vaak af van de specifieke  
+vereisten van de organisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde pentest te maken, maar wordt
 een hybride model vaker gebruikt. Dit is vaak de ideale oplossing waarbij automatisatie en menselijke ervaring elkaar kunnen 
-aanvullen voor een efficiënte Reconnaissance-fase~\autocite{techtarget}.
+aanvullen voor een efficiënte Reconnaissance-fase ~\autocite{techtarget}.
 
 \subsection{Efficiëntie en uitdagingen}
 
@@ -115,12 +118,12 @@ vertrouwd op de experten van het vak bij het beoordelen van de al dan niet geaut
 
 Bij vele methoden wordt er vaak nog op gerekend dat er een menselijke input is bij het maken van een vulnerability assessment (VA)
 
-bij het analyseren en prioriteren. Dit verhoogt da kans op menselijke fouten en is tijdintensief, ook zijn de testen vaak
+bij het analyseren en prioriteren. Dit verhoogt de kans op menselijke fouten en is tijdintensief, ook zijn de testen vaak
 
 inconsistent door de individuele voorkeuren van de pentester volgens ~\textcite{Ghanem}.
 
 
-Binnen pentesting worden er nog vaak nieuwe technologieën ondekt en gebruikt, een van deze nieuwe technologieën is het gebruik van
+Binnen pentesting worden er nog vaak nieuwe technologieën ontdekt en gebruikt, één van deze nieuwe technologieën is het gebruik van
 
 kunstmatige intelligentie. Zoals Het Intelligent Automated Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem},
 
@@ -192,10 +195,10 @@ Aan de hand van de verzamelde informatie zal het onderzoek geëvalueerd worden a
 
 Om de resutaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
 - De nodige tijd voor informatieverzameling.
-- De Nauwkeurigheid van de ondekete gegevens.
+- De Nauwkeurigheid van de ondekte gegevens.
 - Het aantal gevonden unieke kwetsbaarheden.
 
-Ook zullen er frameworks zoals OSTTMM en OWASp testing guid gebruit worden om de valideit van het onderzoek nog te vergroten.
+Ook zullen er frameworks zoals OSTTMM en OWASp testing gebruikt worden om de valideit van het onderzoek nog te vergroten.
 Deze richtlijnen en standaarden zal helpen om de resultaten van de PoC te vergelijken en te beoordelen.
 
 Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect en efficiënt is.
@@ -230,9 +233,9 @@ De machine learning libraries (bijv. TensorFlow of PyTorch) zullen ook gebruikt 
 \subsection{Planning en deliverables}
 Er zijn 4 fasen in het onderzoek:
 \begin{enumerate}
-    \item \textbf{Literatuurstudie} (3 weken): Relevante bronnen zal worden geanalyseerd en de onderzoeksresultaten worden geïdentificeerd.
-    \item \textbf{Proof of Concept} (5 weken): De geautomatiseerde workflow wordt ontwikkeld en geimplementeerd.
-    \item \textbf{Experimentele evaluatie} (4 weken): De PoC wordt getest op een gesimuleerde omgevingen.
+    \item \textbf{Literatuurstudie} (3 weken): Relevante bronnen zullen worden geanalyseerd en de onderzoeksresultaten worden geïdentificeerd.
+    \item \textbf{Proof of Concept} (5 weken): De geautomatiseerde workflow wordt ontwikkeld en geïmplementeerd.
+    \item \textbf{Experimentele evaluatie} (4 weken): De PoC wordt getest in een gesimuleerde omgevingen.
     \item \textbf{Vergelijkende analyse en rapportage} (3 weken): De resultaten vergelijken en het schrijven van het eindrapport.
 \end{enumerate}
 
@@ -265,7 +268,7 @@ van automatisatie kunnen demonstreren.
 Ik verwacht dat ik uit mijn onderzoek een concreet inzicht krijg over hoe we de efficiëntie kunnen verbeteren met behulp van
 automatisatie in de reconnaissance-fase van de pentest. Ik verwacht dat de implementatie van een hybride model het efficiëntste
 zal zijn waar een er geavanceerde tool en framework zal gebruikt kunnen worden zoals AutoRecon, Shodan, Nmap en Recon-ng,
-gecombineerd met menselijke expertise. Dit zal er voor zorgen dat er een snellere, betrouwbaardere en nauwkeurigere verzameling van informatie.
+gecombineerd met menselijke expertise. Dit zal er voor zorgen dat er een snellere, betrouwbaardere en nauwkeurigere verzameling van informatie is.
 
 Dit onderzoek zal bijdragen aan efficiëntere pentests, ook zal dit meer inzicht kunnen bieden hoe organisaties tijd en kosten
 kunnen besparen zonder kwaliteitsverlies.
