@@ -105,8 +105,8 @@ Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden terugvinden 
 een geautomatiseerde tool.~\autocite{techtarget} 
 
 Vaak wordt er een keuze gemaakt tussen een handmatige of een geautomatiseerde penettest, deze keuze hangt vaak af van de specifieke  
-vereisten van de organisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde pentest te maken, maar wordt
-een hybride model vaker gebruikt. Dit is vaak de ideale oplossing waarbij automatisatie en menselijke ervaring elkaar kunnen 
+vereisten van de organisatie. Echter wordt er ook niet gekozen om puur handmatig of geautomatiseerde pentest te maken, maar
+een hybride model wordt vaker gebruikt. Dit is vaak de ideale oplossing waarbij automatisatie en menselijke ervaring elkaar kunnen 
 aanvullen voor een efficiënte Reconnaissance-fase ~\autocite{techtarget}.
 
 \subsection{Efficiëntie en uitdagingen}
@@ -121,7 +121,7 @@ aanvullen voor een efficiënte Reconnaissance-fase ~\autocite{techtarget}.
 
 Momenteel zijn er nog enkele uitdagingen bij pentests, zoals ~\textcite{Fugkeaw} beschrijft, dat er nog te veel wordt vertrouwd 
 op de experten van het vak bij het beoordelen van de al dan niet geautomatiseerde Reconnaissance-fase. Bij vele methoden wordt er vaak nog op gerekend dat er een menselijke input is bij het maken van een vulnerability assessment (VA) bij het analyseren en prioriteren. Dit verhoogt de kans op menselijke fouten en is tijdintensief, ook zijn de testen vaakinconsistent door de individuele voorkeuren van de pentester volgens ~\textcite{Ghanem}.
-Binnen pentesting worden er nog vaak nieuwe technologieën ontdekt en gebruikt, één van deze nieuwe technologieën is het gebruik van kunstmatige intelligentie. Zoals Het Intelligent Automated Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem}, hier wordt er gebruik gemaakt van reinforcement learning (RL) om testpatronen te leren en te optimaliseren. Als we deze technologie gebruiken in de reconnaissance-fase samen met het wiskundige model om beslissingen te maken; de Partially observed Markov decision proces (POMDP) kunnen we nauwkeurigere resultaten behalen. Echter blijft het belangrijk dat er een juiste balans zit tussen automatisatie en menselijke controle. Menselijke testers hebben vaker meer creativiteit en intuïtie wat moeilijk is te vervangen door een geautomatiseerde tool. Daarom blijft het belangrijk om te blijven onderzoeken naar hybride modelen.
+Binnen pentesting worden er nog vaak nieuwe technologieën ontdekt en gebruikt, één van deze nieuwe technologieën is het gebruik van kunstmatige intelligentie. Zoals Het Intelligent Automated Penetration Testing System (IAPTS), ontwikkeld door \textcite{Ghanem}, hier wordt er gebruik gemaakt van reinforcement learning (RL) om testpatronen te leren en te optimaliseren. Als we deze technologie gebruiken in de reconnaissance-fase samen met het wiskundige model om beslissingen te nemen; de Partially observed Markov decision proces (POMDP) kunnen we nauwkeurigere resultaten behalen. Echter blijft het belangrijk dat er een juiste balans zit tussen automatisatie en menselijke controle. Menselijke testers hebben vaker meer creativiteit en intuïtie, wat moeilijk is te vervangen door een geautomatiseerde tool. Daarom blijft het belangrijk om te blijven onderzoeken naar hybride modelen.
 
 
 
@@ -149,15 +149,15 @@ Binnen pentesting worden er nog vaak nieuwe technologieën ontdekt en gebruikt, 
 \section{Methodologie}
 \label{sec:methodologie}
 
-Een combinatie van methoden zullen worden gebruikt om de onderzoeksvraag te beantwoorden, er zal onder andere gebruik
+Een combinatie van methoden zal worden gebruikt om de onderzoeksvraag te beantwoorden, er zal onder andere gebruik
 gemaakt worden van de literatuurstudie, onderzoeken en vergelijkende analyses. Hieronder zijn de stappen beschreven:
 
 \subsection{Literatuurstudie}
 
 De literatuurstudie zal de basis vormen voor dit onderzoek. Door een grondige analyse te maken van de reeds bestaande tools en studies,
 die gebruikt worden in de reconnaissance-fase van pentests, kan er een overzicht gemaakt worden van de huidige situatie.
-hierbij wordt er rekening gehouden met de vindingen van~\textcite{Shah,Kothia} die de voordelen en beperkingen aantonen binnen de reconnaissance-fase.
-Ook zal er rekening gehouden worden met nieuwe technologieën zoals die van ~\textcite{Ghanem,Hoang} waar er gebruikt wordt gemaakt van
+Hierbij wordt er rekening gehouden met de vindingen van~\textcite{Shah,Kothia} die de voordelen en beperkingen aantonen binnen de reconnaissance-fase.
+Ook zal er rekening gehouden worden met nieuwe technologieën zoals die van ~\textcite{Ghanem,Hoang} waarbij gebruik wordt gemaakt van
 reinforcement learning (RL), Intelligent Automated Penetration Testing System (IAPTS) en POMDP-modellen. De implementatie van bestaande
 tools en frameworks zoals AutoRecon en Recon-ng zal ook onderzocht worden~\autocite{Shebli}.
 
@@ -165,7 +165,7 @@ De resultaten van deze literatuurstudie zal worden gebruikt om een kader te sche
 
 \subsection{Experimenteel onderzoek}
 
-Om de effectiviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Een Proof of Concept (PoC) opgestart worden.
+Om de effectiviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Proof of Concept (PoC) opgestart worden.
 Dit omvat dat er een workflow zal worden geïmplementeerd met behulp van de automatisatie tools waaronder AutoRecon en Recon-ng. Deze
 Workflow zal getest worden op een gesimuleerd netwerk waar er bekende kwetsbaarheden op staan om via deze data de snelheid,
 nauwkeurigheid en consistentie te meten. Met behulp van deze data kunnen we nieuwe technologieën integreren om onze automatisatie te optimaliseren
@@ -177,28 +177,28 @@ Aan de hand van de verzamelde informatie zal het onderzoek geëvalueerd worden o
 \newpage
 \subsection{Meetbare Criteria voor Analyse}
 
-Om de resutaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
+Om de resultaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
 \begin{itemize}
     \item De nodige tijd voor informatieverzameling.
     \item De Nauwkeurigheid van de ondekte gegevens.
     \item Het aantal gevonden unieke kwetsbaarheden.
 \end{itemize}
 
-Ook zal er het framework OSTTMM gebruikt worden om de validiteit van het onderzoek nog te vergroten.
+Ook zal het framework OSTTMM gebruikt worden om de validiteit van het onderzoek nog te vergroten.
 Deze richtlijnen en standaarden zal helpen om de resultaten van de PoC te vergelijken en te beoordelen.
 
-Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect en efficiënt is.
+Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect heeft en efficiënt is.
 
 %----------------------------------------------------------------------------------------------------------
 \subsection{OSSTMM framework}
 
 Om de validiteit van het onderzoek te vergroten zal er gebruik gemaakt worden van het OSSTMM (Open Source Security Testing Methodology Manual). 
-Dit framework biedt een gestructureerde aanpak voor het uitvoeren en maakt de resulataten van de pentest naukeriger. 
-De OSSTMM Manual bied een wetenschappelijk onderbouwde kader waar we een ideale omgevingn hebben om te plannen en uitvoeren van tests in afzonderlijke, begrijpbare delen.
+Dit framework biedt een gestructureerde aanpak voor het uitvoeren en maakt de resultaten van de pentest naukeriger. 
+De OSSTMM Manual biedt een wetenschappelijk onderbouwd kader waar we een ideale omgeving hebben om te plannen en uitvoeren van tests in afzonderlijke, begrijpbare delen.
 
 De OSSTMM stelt dat"Testing is a complicated affair and with anything complicated, you approach it in small, comprehensible pieces to be sure you don’t make mistakes."~\autocite{Herzog}
-Dit prencippe zal de kern vormen van mijn methodologie. 
-Door de reconnaissance-fase op te splitesen in kleinere en duidelijke stappen, kan ik op een vertroubare manier tools en frameworks evalueren en toepassen om de efficiëntie en effectieviteit te verbeteren
+Dit principe zal de kern vormen van mijn methodologie. 
+Door de reconnaissance-fase op te splitsen in kleinere en duidelijke stappen, kan ik op een betrouwbare manier tools en frameworks evalueren en toepassen om de efficiëntie en effectieviteit te verbeteren
 
 \begin{itemize}
     \item defineren van de scope: 
@@ -210,7 +210,7 @@ Door de reconnaissance-fase op te splitesen in kleinere en duidelijke stappen, k
     \item Evalueren van Tools en Frameworks:
     Binnen de gestructureerde aanpak van OSSTMM zullen verschillende automatiseringstools en -frameworks getast en beoordeld worden om hun effectiviteit en efficiëntie te bepalen.
     \item Analyseren en rapporteren:
-    De laatsest stap van de methodolegie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een raport.
+    De laatste stap van de methodologie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een raport.
 \end{itemize}
 
 % wij zullen ons hier een deel 
@@ -248,7 +248,7 @@ De resultaten van de analyse zullen we vergelijken op basis van enkele criteria 
 In dit onderzoek zullen we gebruik maken van deze tools: 
 
 \begin{itemize}
-    \item Voor de verzamaling van informatie wordt er gebruik gemaakkt van Open-source frameworks waaronder AutoRecon, Nmap, Amass en Recon-ng.
+    \item Voor de verzameling van informatie wordt er gebruik gemaakkt van Open-source frameworks waaronder AutoRecon, Nmap, Amass en Recon-ng.
     \item Python of andere talen voor het ontwerpen van de PoC
     \item voor de Simulatie zullen we gebruik maken van een lokaal virtueel gesimuleerd netwerk
 \end{itemize}
@@ -300,7 +300,7 @@ kunnen besparen zonder kwaliteitsverlies.
 
 De verwachte uitkomsten omvatten:
 \begin{itemize}
-    \item Een gedetailleerde onderzoeksrapport van bestaande tools en frameworks om de pentests te automatiseren.
+    \item Een gedetailleerd onderzoeksrapport van bestaande tools en frameworks om de pentests te automatiseren.
     \item Een Proof of Concept uitrollen waar we de voordelen van een hybride model kunnen demonstreren.
     \item Organisaties concrete aanbevelingen kunnen geven hoe hun pentestomgeving kan worden verbetert door automatisering.
 \end{itemize}
