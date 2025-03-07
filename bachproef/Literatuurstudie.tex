@@ -1,0 +1,71 @@
+%%=============================================================================
+%% Literatuurstudie
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Literatuurstudie}{Literatuurstudie}}
+\label{ch:Literatuurstudie}
+
+\section{Inleiding tot Penetratietesten}
+Penetratietesten (pentests) zijn cyberaanvallen, uitgevoerd door ethische hackers in een gecontroleerde simulatie om uit de netwerken, systemen of applicaties kwetsbaarheden te halen voor dat dit ongeautoriseerde actoren deze kwetsbaarheden kunnen gebruiken ~\autocite{2_Shebli2018}. Deze testen zijn cruciaal voor een organisatie om beveiligingsrisico's uit de systemen te halen en om aan de veiligheidsnormen te voldoen (bv. GDPR, ISO 27001), ook om vertrouwen bij de klanten te winnen \autocite{3_Dalalana2017}.
+
+\subsection{Types Penetratietesten}
+Pentests zijn vaak niet eenzijdig, deze pentesten worden op verschillende manieren gebruik, voor verschillende doelen, targets en specifieke objecten.
+Hiervoor zijn er verschillende pentest strategieën deze kun je kiezen op basis van welke specifieke objectieven die je wilt aanhalen \autocite{1_Vats2020} bespreekt er een paar:
+
+\begin{itemize}
+    \item Externe testen
+    \item Interne testen
+    \item Blinde testen
+    \item Dubbel blinde testen
+    \item Gerichte testen
+\end{itemize}
+
+Daarnaast zijn er verschillende soorten testen die organisaties kunnen uitvoeren, waarbij de keuze tussen deze methoden afhankelijk is van de scope en vereisten van een organisatie:
+
+\begin{itemize}
+    \item \textbf{Black box testing:} De tester heeft geen informatie of voorkennis van het systeem, vergelijkbaar met een externe aanval
+    \item \textbf{White box testing:} De tester krijgt volledige toegang tot de netwerkarchitectuur en broncode
+    \item \textbf{Gray box testing:} De tester krijgt beperkte gegevens, bijvoorbeeld inloggegevens voor low-privilege accounts
+\end{itemize}
+\autocite{9_Khamdamovich2021}
+
+\section{Noodzaak van Pentests}
+Zonder pentesten kunnen bedrijven verschillende risico's oplopen:
+
+\begin{itemize}
+    \item \textbf{Financiële schade:} volgens IBM kan een data lek een bedrijf €4,88 miljoen kosten inclusief boetes en herstelkosten \autocite{16_Herzog2014}
+    \item \textbf{Operationele downtime:} vele aanvallen lijden tot een gemiddelde van 21 dagen downtime \autocite{19_DBIR2023}
+    \item \textbf{Reputatie schade:} Een publiekelijk geweten cyberaanval kan ervoor zorgen dat een bedrijf 60\% van zijn klanten verliest \autocite{18_Ponemon2022}
+\end{itemize}
+
+\section{De Reconnaissance-Fase}
+Ieder type pentest begint met een reconnaissance-fase, de kritieke eerste stap waar de kern informatie verzamelen is. Deze fase omvat het verzamelen van informatie over het doelwit om zwakke punten te identificeren. Zoals \autocite{11_Shah2019} zegt ``Zonder grondige reconnaissance is een pentest gedoemd om oppervlakkige resultaten te behalen.'' Dit proces legt de basis voor de volgende stappen in de pentest \autocite{10_Kothia2019}.
+
+De term Reconnaissance vindt zijn oorsprong in het Frans (1800 - 1810) en betekent letterlijk verkennen. Dit concept ontstond vanuit de militaire strategie, waar de Calvarie eenheden probeerden waardevolle informatie te verzamelen over het terrein en de vijand, zodat ze met deze informatie een effectieve aanval konden plannen.
+Deze oude principes vertalen zich vandaag naar de cybersecurity, waar het draait om kwetsbaarheden te identificeren voordat een aanval zich kan plaatsvinden.
+Historisch gezien was Reconnaissance een taak van de cavalerie. Zij gebruikten vele manieren om informatie te verzamelen zoals visuele observaties, verkenningstochten en zelfs vroege vormen van social engineering. Deze informatie vormde de basis voor het plannen van een aanvallen en in te spelen op de zwaktes van de vijand.
+In de moderne cybersecurity wereld volgt reconnaissance nog steeds dezelfde principes maar dan digitaal, zoals gevoelige documenten, netwerken en social engineering gebruiken om kwetsbaarheden binnen het bedrijf te vinden.
+
+\subsection{Variaties binnen de Reconnaissance-Fase}
+De reconnaissance kunnen we opsplitsen in een passieve en een actieve kant, elke met hun eigen methoden en tools. Bij passieve reconnaissance is het doel om informatie te verzamelen zonder dat er direct contact is tussen het doelwit en de pentester.
+Hier zijn er verschillende technieken voor zoals de OSINT (Open Source Intelligence) dat gebruik maakt van publieke bronnen zoals databases, sociale media en forums \autocite{3_Dalalana2017}. Shodan maakt gebruik van scanning van IoT apparaten en poorten op toegankelijke internetverbindingen \autocite{12_Monero2025}.
+Deze techniek heeft een zeer lage kans op detectie, maar dit beperkt de diepgang, Hiermee is er slechts 40\% van de kwetsbaarheden dat aan het licht komt \autocite{13_Mahin2014}.
+Bij de actieve reconnaissance staat de pentester echter wel direct in contact met het doelwit om informatie te verkrijgen, hier bestaan ook vele technieken voor zoals een Portscanner die open poorten en services kan detecteren \autocite{12_Monero2025}. Vulnerability scanning is ook een techniek om automatisch bekende kwetsbaarheden te detecteren \autocite{4_GOEL2015}. Deze testen hebben wel een hogere nauwkeurigheid tot 92\% bij geavanceerde tools maar dit kan firewalls of IPS systemen activeren \autocite{14_Li2022}.
+
+\subsection{Automatisering}
+Automatisatie maakt het mogelijk om de reconnaissance fase te versnellen. \textcite{20_Hoang2022} heeft deep reinforcement learning (RL) gebruikt voor de geautomatiseerde aanpak voor pentesten. Dit model is gebaseerd op het A3C-algoritme. Dit algoritme leert om op zichzelf beslissingen te nemen, deze beslissingen kunnen gaan over het kiezen van de payloads en het gebruiken van de juiste exploits. Zijn methode is gericht op drie functies: informatie verzamelen, exploitatie en rapportage\autocite{20_Hoang2022}.Volgens \textcite{10_Kothia2019} kan de eerste fase binnen pentesting in de reconnaissance-fase veel efficiënter gebeuren met behulp van automatisatie. Er zijn veel open source tools beschikbaar, maar helaas vraagt het gebruik van deze tools nog veel handmatige inspanning om ze te integreren.
+Er is een geautomatiseerde aanpak gecreëerd door Kothia om deze tools efficiënter te integreren. Deze resultaten toonden aan dat dit implementatie tijd kan besparen en zorgt voor een betere nauwkeurige uitvoering \autocite{10_Kothia2019}.
+
+\subsection{Innovaties in Reconnaissance}
+Om pentests te automatiseren, zijn er verschillende frameworks en tools beschikbaar om efficiënt en snel informatie te verzamelen. 
+Onder andere AutoRecon, Recon-ng, Shodan, Nmap, NetRecon en cyberscan, deze tools zijn vaak open source en zijn krachtige tools ontwikkeld om het proces van reconnaissance te versnellen \autocite{2_Shebli2018} .
+
+\section{Vergelijkingen}
+Automatisering kan de efficiëntie en snelheid van de reconnaissance-fase verhogen. Er zijn veel tools die snel een netwerk kunnen scannen en de kwetsbaarheden kunnen detecteren. Door automatisatie kunnen organisaties sneller en kosteneffectieve tests uitvoeren. Deze automatisatie kan echter wel leiden tot een kwaliteitsverlies, d.w.z. dat het systeem mogelijks niet alle kwetsbaarheden vindt \autocite{24_peris2023}. Meer diepgaande
+Scans gebeuren vaak handmatig, deze zijn flexibeler dan een geautomatiseerde test. Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden terugvinden die niet makkelijk te detecteren vallen bij een geautomatiseerde tool \autocite{23_techtarget2023}. Het kiezen tussen een handmatige of een geautomatiseerde pentest komt vaak voor, deze keuze hangt af van de specifieke vereisten van de organisatie. \textcite{12_Monero2025} analyseerde telkens 50 cases studies waar er een geautomatiseerde en een hybride aanpak kwetsbaarheden detecteerde, waar de studie een hybride aanpak nam konden ze in deze testcase 85\% van de kwetsbaarheden detecteren, tegenover de 70\% bij volledige automatisering.
+Bij een voorbeeld van \autocite{6_whitaker2005}, waar simulaties aantonen dat onvoldoende training in het gebruik van tools kan leiden tot 25\% vals positieve resultaten. Dit benadrukt de gestandaardiseerde protocollen, zoals het OSTTMM framework om dit tegen te gaan en consistentie te garanderen.
+
+\section{Efficiëntie en uitdagingen}
+Momenteel zijn er nog enkele uitdagingen bij pentests; zoals \textcite{21_Fugkeaw2023} beschrijft, dat er nog te veel vertrouwen is in de experten van het vak bij het beoordelen van de al dan niet geautomatiseerde reconnaissance-fase. Bij veel methoden is er nog vaak de verwachting dat er een menselijke input nodig is bij het maken van een vulnerability assessment (VA) bij het analyseren en prioriteren. Dit verhoogt de kans op menselijke fouten en is tijdintensief, ook zijn de testen vaak inconsistent door de individuele voorkeuren van de pentester volgens. \textcite{22_Ghanem2020} Binnen pentesting ontdekken en gebruiken professionals vaak nieuwe technologieën, één van deze nieuwe technologieën is het gebruik van kunstmatige intelligentie. Zoals het Intelligent Automated Penetration Testing System (IAPTS), dat ontwikkeld is door \textcite{22_Ghanem2020}, in deze studie is er gebruik gemaakt van reinforcement learning (RL) om testpatronen te leren en te optimaliseren. Als we deze technologie gebruiken in de reconnaissance-fase samen met het wiskundige model om beslissingen te nemen, de Partially observed Markov decision proces (POMDP), kunnen we nauwkeurigere resultaten zien. Echter blijft het belangrijk dat er een juiste balans zit tussen automatisatie en menselijke controle. Menselijke testers hebben vaker meer creativiteit en intuïtie, wat moeilijk is te vervangen door een geautomatiseerde tool. Daarom is het belangrijk onderzoek te blijven uitvoeren naar hybride modellen.
+
+

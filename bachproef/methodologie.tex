@@ -26,5 +26,102 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
+Om de onderzoeksvraag te kunnen beantwoorden zal de aanpak een combinatie zijn van methoden, waar er onder andere gebruik
+gemaakt zal worden van de literatuurstudie, onderzoeken en vergelijkende analyses. Hieronder zijn de stappen beschreven:
+
+\subsection{Literatuurstudie}
+
+De literatuurstudie zal de basis vormen voor dit onderzoek. Door een grondige analyse te maken van de reeds bestaande tools en studies,
+die bijdragen in de reconnaissance-fase van pentests, is het mogelijk om een overzicht te maken van de huidige situatie.
+Hierbij spelen de vindingen van~\textcite{Shah,Kothia} een rol die de voordelen en beperkingen aantonen binnen de reconnaissance-fase.
+Ook zal er rekening gehouden worden met nieuwe technologieën zoals die van ~\textcite{Ghanem,Hoang} waarin zij gebruik maken van
+reinforcement learning (RL), Intelligent Automated Penetration Testing System (IAPTS) en POMDP-modellen. De implementatie van bestaande
+tools en frameworks zoals AutoRecon en Recon-ng omvat ook een grondige analyse. ~\autocite{Shebli}
+De resultaten van deze literatuurstudie dienen om een kader te schetsen voor de verdere ontwikkeling van dit onderzoek.
+
+\subsection{Experimenteel onderzoek}
+
+Een Proof of Concept (PoC) zal de effectiviteit van de automatisering in de reconnaisance-fase kunnen demonstreren.
+% Om de effectiviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Proof of Concept (PoC) opgestart worden.
+Dit omvat de implementatie van een workflow met behulp van automatisatie tools waaronder AutoRecon en Recon-ng. 
+Deze workflow test de werking op een gesimuleerd netwerk waar er bekende kwetsbaarheden op staan om via deze data de snelheid,
+nauwkeurigheid en consistentie te meten. Deze data kunnen nieuwe technologieën voortbrengen om automatisatie te optimaliseren
+zoals reinforcement learning (RL) om patronen te herkennen.
+De verzamelde informatie zal als basis dienen voor de evaluatie op nauwkeurigheid, tijdswinst en consistentie.
+
+
+%----------------------------------------------------------------------------------------------------------
+% \newpage
+% \subsection{Meetbare Criteria voor Analyse}
+
+% Om de resultaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
+% \begin{itemize}
+%     \item De nodige tijd voor informatieverzameling.
+%     \item De Nauwkeurigheid van de ondekte gegevens.
+%     \item Het aantal gevonden unieke kwetsbaarheden.
+% \end{itemize}
+
+% Ook zal het framework OSTTMM gebruikt worden om de validiteit van het onderzoek nog te vergroten.
+% Deze richtlijnen en standaarden zal helpen om de resultaten van de PoC te vergelijken en te beoordelen.
+
+% Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect heeft en efficiënt is.
+
+%----------------------------------------------------------------------------------------------------------
+\subsection{OSSTMM framework}
+
+Om de validiteit van het onderzoek te vergroten zal deze studie gebruik maken van het OSSTMM (Open Source Security Testing Methodology Manual) framework. 
+Dit framework biedt een gestructureerde aanpak voor het uitvoeren en maakt de resultaten van de pentest nauwkeuriger. 
+De OSSTMM Manual biedt een wetenschappelijk onderbouwd kader als ideale omgeving om te plannen en tests uit te voeren in afzonderlijke, begrijpbare delen.
+De OSSTMM framework stelt dat "Testing is a complicated affair and with anything complicated, you approach it in small, comprehensible pieces to be sure you don’t make mistakes.". ~\autocite{Herzog}
+Dit principe zal de kern vormen van de methodologie. 
+Door de reconnaissance-fase op te splitsen in kleinere en duidelijke stappen, creëert deze studie een betrouwbare manier om tools en frameworks te evalueren en toe te passen om de efficiëntie en effectiviteit te verbeteren.
+
+\begin{itemize}
+    \item Definiëren van de scope: 
+    de componenten die binnen de reconnaisance-fase behoren zoals netwerkstructuren, systemen en applicaties moeten duidelijk afgebakend zijn;
+    \item identificeren van informatiebronnen:
+    de relevante informatie voor de reconnaisance-fase zoals bronnen en informatie, openbare Databases en netwerkdiensten, moet verzameld worden; 
+    \item toepassen van de OSSTMM principes:
+    de OSSTMM richtlijnen en principes leggen hun nadruk op het verzamelen van objectieve en verifieerbare gegevens;
+    \item evalueren van Tools en Frameworks:
+    binnen de gestructureerde aanpak van OSSTMM zullen verschillende automatiseringstools en frameworks getest en beoordeeld worden om hun effectiviteit en efficiëntie te bepalen;
+    \item analyseren en rapporteren:
+    de laatste stap van de methodologie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een rapport.
+\end{itemize}
+
+% wij zullen ons hier een deel 
+% Door de richtlijnen en standaarden van OSSTMM te volgen, kunnen we ervoor zorgen dat de resultaten van ons onderzoek betrouwbaar en reproduceerbaar zijn.
+
+% Het OSSTMM framework zal worden toegepast in de volgende stappen van ons onderzoek:
+% \begin{itemize}
+%     \item \textbf{Planning en voorbereiding}: Het definiëren van de scope en doelstellingen van de penetratietest, evenals het identificeren van de benodigde middelen en tools.
+%     \item \textbf{Informatie verzamelen}: Het gebruik van OSSTMM-methoden om systematisch informatie te verzamelen over het doelwit, inclusief netwerkconfiguraties, services en mogelijke kwetsbaarheden.
+%     \item \textbf{Analyse en evaluatie}: Het toepassen van OSSTMM-richtlijnen om de verzamelde informatie te analyseren en de beveiligingsstatus van het doelwit te beoordelen.
+%     \item \textbf{Rapportage}: Het documenteren van de bevindingen en aanbevelingen volgens de OSSTMM-standaarden, zodat de resultaten duidelijk en bruikbaar zijn voor de betrokken stakeholders.
+% \end{itemize}
+
+% Door het OSSTMM framework te integreren in ons onderzoek, kunnen we een gestructureerde en methodische aanpak garanderen, wat bijdraagt aan de betrouwbaarheid en validiteit van onze bevindingen.
+
+% "Testing is a complicated affair and with anything complicated, you approach it in
+% small, comprehensible pieces to be sure you don’t make mistakes. " ~\autocite{Herzog}
+
+
+
+\subsection{Vergelijkende studie}
+
+Een vergelijkende analyse zal de toegevoegde waarde van de automatisering bepalen. Binnen het onderzoek verloopt dit in 3 stappen:
+
+\begin{itemize}
+    \item een handmatig uitgevoerde reconnaissance-fase, waarbij menselijke testers traditionele methoden toepassen;
+    \item een volledig geautomatiseerde aanpak met behulp van de PoC;
+    \item een hybride aanpak die handmatige en geautomatiseerde methoden combineert.
+\end{itemize}
+
+De resultaten van de analyse zal een vergelijking ondergaan dat gebaseerd is op enkele criteria zoals tijdsduur, nauwkeurigheid en gevonden kwetsbaarheden.
+De OSSTMM-framework zal hier een gestructureerde kader bieden bij de evaluatie van elke aanpak. Het framework zorgt voor het duidelijk opdelen van de reconnaissance-fase in begrijpbare en afzonderlijke stappen, dit zal de consistentie en de objectiviteit garanderen tijdens de vergelijkingen.
+
+
+
+
 \lipsum[21-25]
 
