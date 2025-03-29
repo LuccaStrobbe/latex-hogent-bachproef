@@ -48,23 +48,42 @@
 % Other packages not already included can be imported here
 
 %%---------- Document metadata -------------------------------------------------
-% TODO: Replace this with your own information
+% Document metadata (must come before \begin{document})
+
+\degreesought{Professionele Bachelor toegepaste informatica}
+
+
+\title{Hoe kan de automatisering van de reconnaissance-fase de efficiëntie van penetratietests verbeteren, en welke tools of frameworks kunnen hier het meest effectief aan bijdragen?}
 \author{Lucca Strobbe}
 \supervisor{Dhr. A. Van Maele}
 \cosupervisor{Dhr. S. Geeurickx}
-\title[Hoe kan de automatisering van de reconnaissance-fase de efficiëntie van penetratietests verbeteren, en welke tools of frameworks kunnen hier het meest effectief aan bijdragen?]%    {Titel van de bachelorproef}
-\academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
+\academicyear{2024-2025}
 \examperiod{1}
-\degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
-\partialthesis{false} %% To display 'in partial fulfilment'
-%\institution{Internshipcompany BVBA.}
 
 %% Add global exceptions to the hyphenation here
 \hyphenation{back-slash}
 
 %% The bibliography (style and settings are  found in hogentthesis.cls)
-\addbibresource{bachproef.bib}            %% Bibliography file
-\addbibresource{../voorstel/voorstel.bib} %% Bibliography research proposal
+
+%%%%%%%%%%%%%%%
+%tijdelijk uitgeschakeld
+%%%%%%%%%%%%%%%
+% Make sure these lines are uncommented and correct
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{bachproef.bib}
+
+
+% \addbibresource{../voorstel/voorstel.bib}
+
+%%%%%%%%%%%%%%%
+%tijdelijk ingeschakeld
+% \usepackage[backend=biber,style=apa]{biblatex}
+% \addbibresource{bachproef.bib}
+
+%%%%%%%%%%%%%%%
+%tijdelijk uitgeschakeld
+%%%%%%%%%%%%%%%
+
 \defbibheading{bibempty}{}
 
 %% Prevent empty pages for right-handed chapter starts in twoside mode
@@ -130,10 +149,10 @@
 % te verspreiden!
 
 \input{inleiding}
-\input{standvanzaken}
+% \input{standvanzaken}
 \input{methodologie}
 
-\input{Literatuurstudie}
+\input{Literatuurstudie.tex}
 
 
 

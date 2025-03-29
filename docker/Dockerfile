@@ -13,4 +13,6 @@ RUN apt-get update && apt-get install -y \
     && pip install pygments \
     && rm -rf /var/lib/apt/lists/*
 COPY fonts/ /usr/share/fonts/opentype
-RUN fc-cache -f -v
+RUN fc-cache -f -v && \
+    chmod -R 644 /usr/share/fonts/opentype/ && \
+    chmod 755 /usr/share/fonts/opentype/
