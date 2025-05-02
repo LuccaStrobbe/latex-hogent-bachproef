@@ -1,0 +1,121 @@
+%%=============================================================================
+%% Proof of Concept
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Proof of Concept}{Proof of Concept}}%
+\label{ch:Proof of Concept}
+
+
+\section{OSSTMM framework}
+
+\section{intorductie tot OSSTMM}
+Security testen en penetratietesten hebben niet alleen de praktische tools nodig om de testen uit te voeren maar ook een gestructureerde wetenschappelijke methodologie.
+De Open Source Security Testing Methodology Manual (OSSTMM) bied een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door de Institute for Security and Open Methodologies (ISECOM).
+Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak om het evalueren en het verbeteren van de operationele security.
+
+Het OSSMTT framework zal in deze bachelorproef dienen als de centrale framework om de testresultaten te evalueren en te vergelijken zowel de handmatige als de geautomatiseerde aanpak in een gecontroleerde testomgeving.
+De structuur van het framework maakt het mogelijk om de tools en methoden op een objectieve en herhaalbare manier te vergelijken door eerder gedefinieerde parameters.
+
+\section{OSSTMM doelstellingen}
+Het OSSMTT framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten naar een precies methodologisch proces.
+De ISECOM definieerde het OSSTMM framework die de volgende doelstellingen heeft:
+
+\begin{itemize}
+  \item Standaardiseren: de testen moeten consistent zijn onafhankelijk van wie ze uitvoeren.
+  \item Reproduceerbaar: de testen zouden dezelfde meetbare resultaten moeten kunnen reproduceren.
+  \item Neutraal: de testen moeten onafhankelijk zijn van verschillende leveranciers en tools.
+  \item Meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren maar ook de toegankelijkheid en het risico van misbruik.
+\end{itemize}
+
+\section{de opbouw van OSSMTT}
+
+\subsection{OSSMM secties}
+Het OSSMTT framework bestaat uit 5 verschillende secties waar ik ieder systeem kan onderzoeken.
+Dit framework categoriseert de tools en methoden voor de reconnaissance in 1 of meerdere secties.
+
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\linewidth}{l X l}
+      \toprule
+      \textbf{Sectie} & \textbf{Beschrijving} & \textbf{voorbeelden tools} \\
+      \midrule
+      Human         & Interactie met mensen, publieke data, OSINT, social engineering   & Maltego, theHarvester, Spiderfoot \\
+      Physical      & Fysieke toegang, sloten, badge cloning                            & RFID tests, badge cloning \\
+      Wireless      & Wi-Fi, Bluetooth, RF en draadloze signalen                        & Kismet, aircrack-ng \\
+      Telecom       & gescprekken, modems, VoIP, PBX                                    & SIP tools, VoIP sniffing \\
+      Data Networks & TCP/IP, HTTP, SMTP, netwerk- en applicatiescans                   & Nmap, AutoRecon, Nikto, Sn1per \\
+      \bottomrule
+    \end{tabularx}
+    \caption[OSSTMM secties]{\label{tab:channels}de vijf OSSTMM security secties en voorbeelden.}
+\end{table}
+
+In deze bachelorproef ligt de focus enkel op de secties \textbf{Human} en \textbf{Data Network}.
+
+\subsection{de RAV score}
+
+Elke sectie binnen OSSTMM krijgt een RAV (Risk Assessment Value) score berekend op basis van 3 waarden.
+Deze waarden vormen dan samen de basis voor het risicoprofiel.
+
+\begin{itemize}
+    \item \textbf{Visibility (V)}: hoeveel informatie is er zichtbaar voor een tester of aanvaller ?
+    \item \textbf{Access (A)}: Tot welke laag kan de tester of aanvaller geraken ?
+    \item \textbf{Trust (T)}: toont het systeem vertrouwelijke informatie (bv. open shares, default logins) ?
+\end{itemize}
+
+
+\subsection{Rules of engagement (RoE)}
+
+Binnen de security testing moeten er een specifieke regels zijn die de scope en de regels definiëren. Binnen het OSSTMM framework is dit de Rules of Engagement (RoE).
+
+\begin{itemize}
+  \item Welke doel systemen komen in aanmerking voor te testen?
+  \item Welke tools en methoden zijn toegestaan voor gebruik?
+  \item Welke risico's zijn aanvaardbaar? 
+  \item Kan de veiligheid van de omgeving gewaarborgd blijven?
+\end{itemize}
+
+In deze Bachelorproef zijn alle testen in een geïsoleerde virtuele omgeving uitgevoerd. Dit zorgt voor:
+
+\begin{itemize}
+  \item Volledige rechten door zelf opgezette doelwit.
+  \item Geen contact met het internet of met interne systemen.
+  \item Geen impact buiten de virtuele omgeving.
+\end{itemize}
+
+\section{OSSTMM toegepast op de reconnaisanse fase}
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \begin{tabularx}{\linewidth}{l l X l}
+    \toprule
+    \textbf{activiteit} & \textbf{secties} & \textbf{gebruikkte tools} & \textbf{RAV score} \\
+    \midrule
+    Port scanning       & Data Network & Nmap, RustScan                       & V: Hoog,   A: Medium, T: Laag \\
+    Banner grabbing     & Human        & Netcat, Telnet                       & V: Medium, A: Laag,   T: Medium \\
+    Web enumeration     & Data Network & Dirb, Gobuster, Nikto, Nuclei        & V: Medium, A: Medium, T: Laag \\
+    DNS/subdomain enum  & Data Network & DNSenum, DNSrecon, Amass             & V: Medium, A: None,   T: None \\
+    SMB enumeration     & Data Network & smbclient                            & V: Medium, A: Medium, T: Hoog \\
+    OSINT               & Human        & theHarvester, Spiderfoot, Datasploit & V: Medium, A: None,   T: Medium \\
+    \bottomrule
+  \end{tabularx}
+  \caption[activiteieten in OSSTMM]{\label{tab:recon}Reconnaissance activiteiten gemaped naar OSSTMM secties en RAV metrics.}
+\end{table}
+
+\section{OSSTMM voor dit onderoek}
+
+OSSTMM is niet de enigste bestaande framework voor security testen zoals OWASP Testing Guide, NIST SP 800-115, PTES, ISSAF, etc.
+Echter is de OSSTMM de meest geschike framwork voor dit onderzoek omdat :
+
+\begin{itemize}
+  \item Het is een open-source framework.
+  \item Het kan specefiek toegepast worden op de de reconnaissance-fase van pentests.
+  \item Meerdere secties en perspectieven mogelijk (human en technical)
+  \item De mogelijkheid om de tools en methoden te evalueren op basis van inhoud en niet alleen resultaten.
+  \item Op basis van de RAV score een analyse maken.
+\end{itemize}
+
+
+\section{Virtuele omgeving voor de PoC}
+WIP
