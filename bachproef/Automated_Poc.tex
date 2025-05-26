@@ -10,7 +10,7 @@
 \section{Methodology foor tool evaluatie}
 
 De reconnaissance fase werdt uitgevoerd in een gecontroleerde virtuele omgeving (zie ~\ref{ch:Proof of Concept}) om de manuele en automatisatie tools te evalueren.
-deze evaluatie is uitgevoerd met de OSTMM framework nadruk op de Standaardiseren, Reproduceerbaar, Neutraal en Meetbare risico secties.
+deze evaluatie is uitgevoerd met de OSSTMM framework nadruk op de Standaardiseren, Reproduceerbaar, Neutraal en Meetbare risico secties.
 De manuele reconnaissance is uitgevoerd gebruik makende van 54 commando's, deze zijn gekozen om een zo bereed mogelijk oppervlakte te dekken van de reconnaissance fase verdeeld over 5 categorieën.
 De automatisatie reconnaissance is uitgevoerd gebruik makende van 7 verschillende tools: AutoRecon, Cyberscan, LazyRecon, Sn1per, RustScan, Nuclei, ReconFTW.
 Dit hoofdstuk zal een gedetailleerde vergelijking maken, kijkende naar de betrouwbaarheid, snelheid, bruikbaarheid, CPU gebruik en de OSSTMM RAV score.
@@ -24,7 +24,7 @@ Dit hoofdstuk zal een gedetailleerde vergelijking maken, kijkende naar de betrou
 
 \section{manuele reconnaissance}
 De manuele reconnaissance werd uitgevoerd op Kali Linux 2024.2 (192.168.56.10) met doelwit Metasploitable2 (192.168.56.11) over een geïsoleerde virtuele netwerk (zie ~\ref{ch:Proof of Concept}).
-Het uitvoeren van de manuele reconnaissance gebruikte 54 commando's, iedere commando is uitgekozen om ieder aspect van de reconnaissancete dekken wat gedefinieerd was in het OSSTMM Data network en Human secties (ref{tabel2}).
+Het uitvoeren van de manuele reconnaissance gebruikte 54 commando's, iedere commando is uitgekozen om ieder aspect van de reconnaissance te dekken wat gedefinieerd was in het OSSTMM Data network en Human secties (ref{tabel2}).
 De commando's zijn manueel getest om de output, uitvoertijd en mogelijks foutmeldingen te verstaan, deze resultaten zijn opgeslagen in een Excel bestand(zie ~\ref{file:vergelijking_recon_manueel})
 Na het uitvoeren van al de commando's is er een Bash script opgezet om de betrouwbaarheid van te tool, tijd, CPU gebruik te testen.
 
@@ -179,7 +179,7 @@ De voornaamste rol is de snelle enumiratie om de host beschikbaarheid en basis s
 \end{itemize}
 
 \subsection{Sn1per}
-Sn1per is een volledige offensieve security scanner dat reconnaisanse invoegt met vulnerablility scanning en rapportage. 
+Sn1per is een volledige offensieve security scanner dat reconnaissance invoegt met vulnerablility scanning en rapportage. 
 Deze tool presteerde gelijkaardig met AutoRecon maar geeft ook een gelimiteerde vulnerabilityanalyse zoals een standaard credential controles en openstaande admin interfaces.
 
 \begin{itemize}
@@ -287,9 +287,9 @@ Autorecon en Sn1per geven de meest gebalanseerde resultaten, met een hoge Visibi
 Rustscan is ongeonovertroffen in snelheid en poort scan's, terwijl Nuclei uitsteekt met zijn vulnerability detectie.
 Cyberscan en Lazyrecon zijn op hun beurt ook geschikt voor snelle scans en ReconFTW ondaks de offline modus nog steeds mogelijk om bruikbare informatie te geven. 
 
-uit deze resultaten zien we dat de automatisatie binnen de reconnaisanse fase de efficiëntie verbeterd. 
+uit deze resultaten zien we dat de automatisatie binnen de reconnaissance fase de efficiëntie verbeterd. 
 Iedere automatisatie tool die in deze vergelijking aan bod is gekomen heeft zijn eigen use case, wat op zijn beurt dan ook weer speelt met de effectiviteit van de tools.
-Voor deze studie met de focus op de reconnaisanse fase en het zo veel mogelijk verzamelen van data zijn de AutoRecon en Sn1per de meest bruikbare door hun uitgebrijde analyse.
+Voor deze studie met de focus op de reconnaissance fase en het zo veel mogelijk verzamelen van data zijn de AutoRecon en Sn1per de meest bruikbare door hun uitgebrijde analyse.
 
 \section{vergelijking van manueel en geautomatiseerde reconnaissance}
 De manuele en de automatisatie reconnaissance zijn vergeleken op basis van betrouwbaarheid, snelheid, bruikbaarheid en OSSTMM overeenkomst en RAV score.
