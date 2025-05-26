@@ -29,7 +29,7 @@
 Om de onderzoeksvraag te kunnen beantwoorden zal de aanpak een combinatie zijn van methoden, waar er onder andere gebruik
 gemaakt zal worden van de literatuurstudie, onderzoeken en vergelijkende analyses. Hieronder zijn de stappen beschreven:
 
-\subsection{Literatuurstudie}
+\section{Literatuurstudie}
 
 De literatuurstudie zal de basis vormen voor dit onderzoek. Door een grondige analyse te maken van de reeds bestaande tools en studies,
 die bijdragen in de reconnaissance-fase van pentests, is het mogelijk om een overzicht te maken van de huidige situatie.
@@ -39,7 +39,7 @@ reinforcement learning (RL), Intelligent Automated Penetration Testing System (I
 tools en frameworks zoals AutoRecon en Recon-ng omvat ook een grondige analyse. ~\autocite{Shebli}
 De resultaten van deze literatuurstudie dienen om een kader te schetsen voor de verdere ontwikkeling van dit onderzoek.
 
-\subsection{Experimenteel onderzoek}
+\section{Experimenteel onderzoek}
 
 Een Proof of Concept (PoC) zal de effectiviteit van de automatisering in de reconnaisance-fase kunnen demonstreren.
 % Om de effectiviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Proof of Concept (PoC) opgestart worden.
@@ -52,7 +52,7 @@ De verzamelde informatie zal als basis dienen voor de evaluatie op nauwkeurighei
 
 %----------------------------------------------------------------------------------------------------------
 % \newpage
-% \subsection{Meetbare Criteria voor Analyse}
+% \section{Meetbare Criteria voor Analyse}
 
 % Om de resultaten van de analyse te beoordelen zal er gewerkt worden met de volgende meetbare criteria:
 % \begin{itemize}
@@ -67,47 +67,107 @@ De verzamelde informatie zal als basis dienen voor de evaluatie op nauwkeurighei
 % Door deze criteria is het makkelijker om objectief te bepalen welke aanpak het meeste effect heeft en efficiënt is.
 
 %----------------------------------------------------------------------------------------------------------
-\subsection{OSSTMM framework}
+% \section{introductei totOSSTMM framework}
 
-Om de validiteit van het onderzoek te vergroten zal deze studie gebruik maken van het OSSTMM (Open Source Security Testing Methodology Manual) framework. 
-Dit framework biedt een gestructureerde aanpak voor het uitvoeren en maakt de resultaten van de pentest nauwkeuriger. 
-De OSSTMM Manual biedt een wetenschappelijk onderbouwd kader als ideale omgeving om te plannen en tests uit te voeren in afzonderlijke, begrijpbare delen.
-De OSSTMM framework stelt dat "Testing is a complicated affair and with anything complicated, you approach it in small, comprehensible pieces to be sure you don’t make mistakes.". %~\autocite{16_Herzog2014}
-Dit principe zal de kern vormen van de methodologie. 
-Door de reconnaissance-fase op te splitsen in kleinere en duidelijke stappen, creëert deze studie een betrouwbare manier om tools en frameworks te evalueren en toe te passen om de efficiëntie en effectiviteit te verbeteren.
+% Om de validiteit van het onderzoek te vergroten zal deze studie gebruik maken van het OSSTMM (Open Source Security Testing Methodology Manual) framework. 
+% Dit framework biedt een gestructureerde aanpak voor het uitvoeren en maakt de resultaten van de pentest nauwkeuriger. 
+% De OSSTMM Manual biedt een wetenschappelijk onderbouwd kader als ideale omgeving om te plannen en tests uit te voeren in afzonderlijke, begrijpbare delen.
+% De OSSTMM framework stelt dat "Testing is a complicated affair and with anything complicated, you approach it in small, comprehensible pieces to be sure you don’t make mistakes.". %~\autocite{16_Herzog2014}
+% Dit principe zal de kern vormen van de methodologie. 
+% Door de reconnaissance-fase op te splitsen in kleinere en duidelijke stappen, creëert deze studie een betrouwbare manier om tools en frameworks te evalueren en toe te passen om de efficiëntie en effectiviteit te verbeteren.
 
-\begin{itemize}
-    \item Definiëren van de scope: 
-    de componenten die binnen de reconnaisance-fase behoren zoals netwerkstructuren, systemen en applicaties moeten duidelijk afgebakend zijn;
-    \item identificeren van informatiebronnen:
-    de relevante informatie voor de reconnaisance-fase zoals bronnen en informatie, openbare Databases en netwerkdiensten, moet verzameld worden; 
-    \item toepassen van de OSSTMM principes:
-    de OSSTMM richtlijnen en principes leggen hun nadruk op het verzamelen van objectieve en verifieerbare gegevens;
-    \item evalueren van Tools en Frameworks:
-    binnen de gestructureerde aanpak van OSSTMM zullen verschillende automatiseringstools en frameworks getest en beoordeeld worden om hun effectiviteit en efficiëntie te bepalen;
-    \item analyseren en rapporteren:
-    de laatste stap van de methodologie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een rapport.
-\end{itemize}
-
-% wij zullen ons hier een deel 
-% Door de richtlijnen en standaarden van OSSTMM te volgen, kunnen we ervoor zorgen dat de resultaten van ons onderzoek betrouwbaar en reproduceerbaar zijn.
-
-% Het OSSTMM framework zal worden toegepast in de volgende stappen van ons onderzoek:
 % \begin{itemize}
-%     \item \textbf{Planning en voorbereiding}: Het definiëren van de scope en doelstellingen van de penetratietest, evenals het identificeren van de benodigde middelen en tools.
-%     \item \textbf{Informatie verzamelen}: Het gebruik van OSSTMM-methoden om systematisch informatie te verzamelen over het doelwit, inclusief netwerkconfiguraties, services en mogelijke kwetsbaarheden.
-%     \item \textbf{Analyse en evaluatie}: Het toepassen van OSSTMM-richtlijnen om de verzamelde informatie te analyseren en de beveiligingsstatus van het doelwit te beoordelen.
-%     \item \textbf{Rapportage}: Het documenteren van de bevindingen en aanbevelingen volgens de OSSTMM-standaarden, zodat de resultaten duidelijk en bruikbaar zijn voor de betrokken stakeholders.
+%     \item Definiëren van de scope: 
+%     de componenten die binnen de reconnaisance-fase behoren zoals netwerkstructuren, systemen en applicaties moeten duidelijk afgebakend zijn;
+%     \item identificeren van informatiebronnen:
+%     de relevante informatie voor de reconnaisance-fase zoals bronnen en informatie, openbare Databases en netwerkdiensten, moet verzameld worden; 
+%     \item toepassen van de OSSTMM principes:
+%     de OSSTMM richtlijnen en principes leggen hun nadruk op het verzamelen van objectieve en verifieerbare gegevens;
+%     \item evalueren van Tools en Frameworks:
+%     binnen de gestructureerde aanpak van OSSTMM zullen verschillende automatiseringstools en frameworks getest en beoordeeld worden om hun effectiviteit en efficiëntie te bepalen;
+%     \item analyseren en rapporteren:
+%     de laatste stap van de methodologie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een rapport.
 % \end{itemize}
 
-% Door het OSSTMM framework te integreren in ons onderzoek, kunnen we een gestructureerde en methodische aanpak garanderen, wat bijdraagt aan de betrouwbaarheid en validiteit van onze bevindingen.
+\section{instroductie tot OSSTMM}
 
-% "Testing is a complicated affair and with anything complicated, you approach it in
-% small, comprehensible pieces to be sure you don’t make mistakes. " ~\autocite{16_Herzog2014}
+Security testen en penetratietesten hebben niet alleen de praktische tools nodig om de testen uit te voeren maar ook een gestructureerde wetenschappelijke methodologie.
+De Open Source Security Testing Methodology Manual (OSSTMM) bied een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door de Institute for Security and Open Methodologies (ISECOM).
+Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak om het evalueren en het verbeteren van de operationele security.
+
+Het OSSMTT framework zal in deze bachelorproef dienen als de centrale framework om de testresultaten te evalueren en te vergelijken zowel de handmatige als de geautomatiseerde aanpak in een gecontroleerde testomgeving.
+De structuur van het framework maakt het mogelijk om de tools en methoden op een objectieve en herhaalbare manier te vergelijken door eerder gedefinieerde parameters.
+
+\section{OSSTMM doelstellingen}
+Het OSSMTT framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten naar een precies methodologisch proces.
+De ISECOM definieerde het OSSTMM framework die de volgende doelstellingen heeft:
+
+\begin{itemize}
+  \item Standaardiseren: de testen moeten consistent zijn onafhankelijk van wie ze uitvoeren.
+  \item Reproduceerbaar: de testen zouden dezelfde meetbare resultaten moeten kunnen reproduceren.
+  \item Neutraal: de testen moeten onafhankelijk zijn van verschillende leveranciers en tools.
+  \item Meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren maar ook de toegankelijkheid en het risico van misbruik.
+\end{itemize}
+
+\section{de opbouw van OSSMTT}
+
+\subsection{OSSMM secties}
+Het OSSMTT framework bestaat uit 5 verschillende secties waar ik ieder systeem kan onderzoeken.
+Dit framework categoriseert de tools en methoden voor de reconnaissance in 1 of meerdere secties.
+
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\linewidth}{l X l}
+      \toprule
+      \textbf{Sectie} & \textbf{Beschrijving} & \textbf{voorbeelden tools} \\
+      \midrule
+      Human         & Interactie met mensen, publieke data, OSINT, social engineering   & Maltego, theHarvester, Spiderfoot \\
+      Physical      & Fysieke toegang, sloten, badge cloning                            & RFID tests, badge cloning \\
+      Wireless      & Wi-Fi, Bluetooth, RF en draadloze signalen                        & Kismet, aircrack-ng \\
+      Telecom       & gescprekken, modems, VoIP, PBX                                    & SIP tools, VoIP sniffing \\
+      Data Networks & TCP/IP, HTTP, SMTP, netwerk- en applicatiescans                   & Nmap, AutoRecon, Nikto, Sn1per \\
+      \bottomrule
+    \end{tabularx}
+    \caption[OSSTMM secties]{\label{tab:channels}de vijf OSSTMM security secties en voorbeelden.}
+\end{table}
+
+In deze bachelorproef ligt de focus enkel op de secties \textbf{Human} en \textbf{Data Network}.
+
+\subsection{de RAV score}
+
+Elke sectie binnen OSSTMM krijgt een RAV (Risk Assessment Value) score berekend op basis van 3 waarden.
+Deze waarden vormen dan samen de basis voor het risicoprofiel.
+
+\begin{itemize}
+    \item \textbf{Visibility (V)}: hoeveel informatie is er zichtbaar voor een tester of aanvaller ?
+    \item \textbf{Access (A)}: Tot welke laag kan de tester of aanvaller geraken ?
+    \item \textbf{Trust (T)}: toont het systeem vertrouwelijke informatie (bv. open shares, default logins) ?
+\end{itemize}
+
+
+\subsection{Rules of engagement (RoE)}
+
+Binnen de security testing moeten er een specifieke regels zijn die de scope en de regels definiëren. Binnen het OSSTMM framework is dit de Rules of Engagement (RoE).
+
+\begin{itemize}
+  \item Welke doel systemen komen in aanmerking voor te testen?
+  \item Welke tools en methoden zijn toegestaan voor gebruik?
+  \item Welke risico's zijn aanvaardbaar? 
+  \item Kan de veiligheid van de omgeving gewaarborgd blijven?
+\end{itemize}
+
+In deze Bachelorproef zijn alle testen in een geïsoleerde virtuele omgeving uitgevoerd. Dit zorgt voor:
+
+\begin{itemize}
+  \item Volledige rechten door zelf opgezette doelwit.
+  \item Geen contact met het internet of met interne systemen.
+  \item Geen impact buiten de virtuele omgeving.
+\end{itemize}
 
 
 
-\subsection{Vergelijkende studie}
+\section{Vergelijkende studie}
 
 Een vergelijkende analyse zal de toegevoegde waarde van de automatisering bepalen. Binnen het onderzoek verloopt dit in 3 stappen:
 

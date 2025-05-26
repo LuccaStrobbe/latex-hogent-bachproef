@@ -6,82 +6,81 @@
 \label{ch:Proof of Concept}
 
 
-\section{OSSTMM framework}
+% \section{OSSTMM framework}
 
-\section{intorductie tot OSSTMM}
-Security testen en penetratietesten hebben niet alleen de praktische tools nodig om de testen uit te voeren maar ook een gestructureerde wetenschappelijke methodologie.
-De Open Source Security Testing Methodology Manual (OSSTMM) bied een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door de Institute for Security and Open Methodologies (ISECOM).
-Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak om het evalueren en het verbeteren van de operationele security.
+% Security testen en penetratietesten hebben niet alleen de praktische tools nodig om de testen uit te voeren maar ook een gestructureerde wetenschappelijke methodologie.
+% De Open Source Security Testing Methodology Manual (OSSTMM) bied een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door de Institute for Security and Open Methodologies (ISECOM).
+% Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak om het evalueren en het verbeteren van de operationele security.
 
-Het OSSMTT framework zal in deze bachelorproef dienen als de centrale framework om de testresultaten te evalueren en te vergelijken zowel de handmatige als de geautomatiseerde aanpak in een gecontroleerde testomgeving.
-De structuur van het framework maakt het mogelijk om de tools en methoden op een objectieve en herhaalbare manier te vergelijken door eerder gedefinieerde parameters.
+% Het OSSMTT framework zal in deze bachelorproef dienen als de centrale framework om de testresultaten te evalueren en te vergelijken zowel de handmatige als de geautomatiseerde aanpak in een gecontroleerde testomgeving.
+% De structuur van het framework maakt het mogelijk om de tools en methoden op een objectieve en herhaalbare manier te vergelijken door eerder gedefinieerde parameters.
 
-\section{OSSTMM doelstellingen}
-Het OSSMTT framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten naar een precies methodologisch proces.
-De ISECOM definieerde het OSSTMM framework die de volgende doelstellingen heeft:
+% \section{OSSTMM doelstellingen}
+% Het OSSMTT framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten naar een precies methodologisch proces.
+% De ISECOM definieerde het OSSTMM framework die de volgende doelstellingen heeft:
 
-\begin{itemize}
-  \item Standaardiseren: de testen moeten consistent zijn onafhankelijk van wie ze uitvoeren.
-  \item Reproduceerbaar: de testen zouden dezelfde meetbare resultaten moeten kunnen reproduceren.
-  \item Neutraal: de testen moeten onafhankelijk zijn van verschillende leveranciers en tools.
-  \item Meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren maar ook de toegankelijkheid en het risico van misbruik.
-\end{itemize}
+% \begin{itemize}
+%   \item Standaardiseren: de testen moeten consistent zijn onafhankelijk van wie ze uitvoeren.
+%   \item Reproduceerbaar: de testen zouden dezelfde meetbare resultaten moeten kunnen reproduceren.
+%   \item Neutraal: de testen moeten onafhankelijk zijn van verschillende leveranciers en tools.
+%   \item Meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren maar ook de toegankelijkheid en het risico van misbruik.
+% \end{itemize}
 
-\section{de opbouw van OSSMTT}
+% \section{de opbouw van OSSMTT}
 
-\subsection{OSSMM secties}
-Het OSSMTT framework bestaat uit 5 verschillende secties waar ik ieder systeem kan onderzoeken.
-Dit framework categoriseert de tools en methoden voor de reconnaissance in 1 of meerdere secties.
+% \subsection{OSSMM secties}
+% Het OSSMTT framework bestaat uit 5 verschillende secties waar ik ieder systeem kan onderzoeken.
+% Dit framework categoriseert de tools en methoden voor de reconnaissance in 1 of meerdere secties.
 
-\begin{table}[H]
-    \centering
-    \footnotesize
-    \begin{tabularx}{\linewidth}{l X l}
-      \toprule
-      \textbf{Sectie} & \textbf{Beschrijving} & \textbf{voorbeelden tools} \\
-      \midrule
-      Human         & Interactie met mensen, publieke data, OSINT, social engineering   & Maltego, theHarvester, Spiderfoot \\
-      Physical      & Fysieke toegang, sloten, badge cloning                            & RFID tests, badge cloning \\
-      Wireless      & Wi-Fi, Bluetooth, RF en draadloze signalen                        & Kismet, aircrack-ng \\
-      Telecom       & gescprekken, modems, VoIP, PBX                                    & SIP tools, VoIP sniffing \\
-      Data Networks & TCP/IP, HTTP, SMTP, netwerk- en applicatiescans                   & Nmap, AutoRecon, Nikto, Sn1per \\
-      \bottomrule
-    \end{tabularx}
-    \caption[OSSTMM secties]{\label{tab:channels}de vijf OSSTMM security secties en voorbeelden.}
-\end{table}
+% \begin{table}[H]
+%     \centering
+%     \footnotesize
+%     \begin{tabularx}{\linewidth}{l X l}
+%       \toprule
+%       \textbf{Sectie} & \textbf{Beschrijving} & \textbf{voorbeelden tools} \\
+%       \midrule
+%       Human         & Interactie met mensen, publieke data, OSINT, social engineering   & Maltego, theHarvester, Spiderfoot \\
+%       Physical      & Fysieke toegang, sloten, badge cloning                            & RFID tests, badge cloning \\
+%       Wireless      & Wi-Fi, Bluetooth, RF en draadloze signalen                        & Kismet, aircrack-ng \\
+%       Telecom       & gescprekken, modems, VoIP, PBX                                    & SIP tools, VoIP sniffing \\
+%       Data Networks & TCP/IP, HTTP, SMTP, netwerk- en applicatiescans                   & Nmap, AutoRecon, Nikto, Sn1per \\
+%       \bottomrule
+%     \end{tabularx}
+%     \caption[OSSTMM secties]{\label{tab:channels}de vijf OSSTMM security secties en voorbeelden.}
+% \end{table}
 
-In deze bachelorproef ligt de focus enkel op de secties \textbf{Human} en \textbf{Data Network}.
+% In deze bachelorproef ligt de focus enkel op de secties \textbf{Human} en \textbf{Data Network}.
 
-\subsection{de RAV score}
+% \subsection{de RAV score}
 
-Elke sectie binnen OSSTMM krijgt een RAV (Risk Assessment Value) score berekend op basis van 3 waarden.
-Deze waarden vormen dan samen de basis voor het risicoprofiel.
+% Elke sectie binnen OSSTMM krijgt een RAV (Risk Assessment Value) score berekend op basis van 3 waarden.
+% Deze waarden vormen dan samen de basis voor het risicoprofiel.
 
-\begin{itemize}
-    \item \textbf{Visibility (V)}: hoeveel informatie is er zichtbaar voor een tester of aanvaller ?
-    \item \textbf{Access (A)}: Tot welke laag kan de tester of aanvaller geraken ?
-    \item \textbf{Trust (T)}: toont het systeem vertrouwelijke informatie (bv. open shares, default logins) ?
-\end{itemize}
+% \begin{itemize}
+%     \item \textbf{Visibility (V)}: hoeveel informatie is er zichtbaar voor een tester of aanvaller ?
+%     \item \textbf{Access (A)}: Tot welke laag kan de tester of aanvaller geraken ?
+%     \item \textbf{Trust (T)}: toont het systeem vertrouwelijke informatie (bv. open shares, default logins) ?
+% \end{itemize}
 
 
-\subsection{Rules of engagement (RoE)}
+% \subsection{Rules of engagement (RoE)}
 
-Binnen de security testing moeten er een specifieke regels zijn die de scope en de regels definiëren. Binnen het OSSTMM framework is dit de Rules of Engagement (RoE).
+% Binnen de security testing moeten er een specifieke regels zijn die de scope en de regels definiëren. Binnen het OSSTMM framework is dit de Rules of Engagement (RoE).
 
-\begin{itemize}
-  \item Welke doel systemen komen in aanmerking voor te testen?
-  \item Welke tools en methoden zijn toegestaan voor gebruik?
-  \item Welke risico's zijn aanvaardbaar? 
-  \item Kan de veiligheid van de omgeving gewaarborgd blijven?
-\end{itemize}
+% \begin{itemize}
+%   \item Welke doel systemen komen in aanmerking voor te testen?
+%   \item Welke tools en methoden zijn toegestaan voor gebruik?
+%   \item Welke risico's zijn aanvaardbaar? 
+%   \item Kan de veiligheid van de omgeving gewaarborgd blijven?
+% \end{itemize}
 
-In deze Bachelorproef zijn alle testen in een geïsoleerde virtuele omgeving uitgevoerd. Dit zorgt voor:
+% In deze Bachelorproef zijn alle testen in een geïsoleerde virtuele omgeving uitgevoerd. Dit zorgt voor:
 
-\begin{itemize}
-  \item Volledige rechten door zelf opgezette doelwit.
-  \item Geen contact met het internet of met interne systemen.
-  \item Geen impact buiten de virtuele omgeving.
-\end{itemize}
+% \begin{itemize}
+%   \item Volledige rechten door zelf opgezette doelwit.
+%   \item Geen contact met het internet of met interne systemen.
+%   \item Geen impact buiten de virtuele omgeving.
+% \end{itemize}
 
 \section{OSSTMM toegepast op de reconnaisanse fase}
 
@@ -118,4 +117,14 @@ Echter is de OSSTMM de meest geschike framwork voor dit onderzoek omdat :
 
 
 \section{Virtuele omgeving voor de PoC}
-WIP
+Om een gecontroleerde en reproduceerbare evaluatie te maken voor de verschillende tools en frameworks is er een virtuele lab opgezet met Oracle Virtualbox.
+In deze virtuele omgeving zijn er 2 verschillende machines opgezet in en geconfigureerd met statische IP adressen en verbonden via een intern netwerk.
+
+\begin{itemize}
+  \item Kali Linux 2024.2: de pentest machine voor reconnaissance. %\texttt{192.168.56.10}
+  \item Metasploitable 2: de doel machine met verschillende kwetsbaarheden. %\texttt{192.168.56.11}
+\end{itemize}
+
+Beide machines zijn verbonden met elkaar via een intern netwerk adapter, gebruik makende van de netwerknaam texttt{intnet}.
+Deze configuratie zorgt er voor dat de machines enkel maar met elkaar kunnen communiceren en niet met het internet of de host machine.
+Deze aanpak zorgt er voor dat er geen externe storingen zijn, vermindert de ethische en beveiligingsrisico's en zorgt voor het ongelimiteerde testen over alle applicatie lagen.
