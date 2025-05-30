@@ -1,0 +1,148 @@
+\chapter{\IfLanguageName{dutch}{automatisatie}{automatisatie}}%
+\label{app:automatisatie}
+{\small
+\begin{landscape}
+\fontfamily{lmr}\selectfont
+\setlength{\tabcolsep}{3pt} % Verkleinde padding tussen kolommen
+\begin{longtable}{lllp{2cm}p{1.2cm}p{4cm}}
+\caption{Vergelijking van automatische reconnaissance-tools} \label{tab:vergelijking-recon-automatisch} \\
+\toprule
+\textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multirow{3}{*}{Poortscanning} & \multirow{3}{*}{AutoRecon} & \texttt{\raggedright autorecon 192.168.56.11 --service-scans} & 17 & 4686.01 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 111, 137, 2049 \\
+ & & \texttt{\raggedright autorecon 192.168.56.11 --ports 21,22,80} & 15 & 4716.99 & Open TCP: 21, 22, 80, 445, 3306; geen robots.txt \\
+ & & \texttt{\raggedright autorecon 192.168.56.11 --single-target} & 18 & 4771.75 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 111, 137 \\
+\multirow{3}{*}{Poortscanning} & \multirow{3}{*}{CyberScan} & \texttt{\raggedright sudo python2 CyberScan.py -s 192.168.56.11 -p udp} & 5 & 0.32 & UDP: IP bereikbaar, geen open poorten \\
+ & & \texttt{\raggedright sudo python2 CyberScan.py -p scan -d 1} & 6 & 74.27 & Open TCP: 21, 22, 80, 445, 3306, enz. \\
+ & & \texttt{\raggedright sudo python2 CyberScan.py -p scan -d 21} & 5 & 12.52 & Open TCP: 21, 22, 80, 445, 3306, enz. \\
+\multirow{2}{*}{Poortscanning} & LazyRecon & \texttt{\raggedright ./lazyrecon.sh -t 192.168.56.11} & 23 & 243.54 & Open TCP: 3306, 5432, 5900, 6000; DNS: fout \\
+ & & \texttt{\raggedright ./lazyrecon.sh -d metasploitable} & - & - & Geen output in Excel \\
+\multirow{5}{*}{Poortscanning} & \multirow{4}{*}{Sniper} & \texttt{\raggedright sniper -t 192.168.56.11 -m normal} & 0 & 3579.53 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 137 \\
+ & & \texttt{\raggedright sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Open TCP: 21, 22, 80; Apache 2.2.8, geen WAF \\
+ & & \texttt{\raggedright sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Open TCP: 80; Apache 2.2.8, paden: /phpMyAdmin/ \\
+ & & \texttt{\raggedright sniper -t 192.168.56.11 -m fullportonly} & 0 & 20.94 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53 \\
+ & & \texttt{\raggedright sniper -t 192.168.56.0/24 -m discover} & 0 & 20.75 & Hosts: 192.168.56.10, .11; Open TCP: 21, 22, 80 \\
+\multirow{4}{*}{Poortscanning} & \multirow{3}{*}{RustScan} & \texttt{\raggedright rustscan -a 192.168.56.11} & 0 & 55.33 & Open TCP: 21, 22, 80, 445, 3306, enz.; MAC: 08:00:27 \\
+ & & \texttt{\raggedright rustscan -a 192.168.56.11 -- -sV} & 16 & 199.15 & Open TCP: 21, 22, 80, 445, 3306, 5900; VNC: 3.3 \\
+ & & \texttt{\raggedright time rustscan -a 192.168.56.11 --top} & 48 & 59.99 & Open TCP: 21, 22, 80, 445, 3306, enz.; OS: Linux \\
+ & & \texttt{\raggedright rustscan -a 192.168.56.11 -p 21,22,80} & 0 & 159.71 & Open TCP: 21, 22, 80, 3306, 5432, 5900; Apache 2.2.8 \\
+\multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{3}{*}{Nuclei} & \texttt{\raggedright nuclei -u 192.168.56.11 -t cves/} & 8 & 5035.19 & CVE-2012-1823 (PHP RCE); geen HTTP-headers \\
+ & & \texttt{\raggedright nuclei -u http://192.168.56.11:80} & 5 & 1028.20 & CVE-2012-1823 (PHP RCE); geen HTTP-headers \\
+ & & \texttt{\raggedright nuclei -l open\_ports.txt -t cves/} & 7 & 1596.38 & CVE-2012-1823 (PHP RCE); poorten 3632, 2049 fout \\
+\multirow{4}{*}{Reconnaissance} & \multirow{4}{*}{ReconFTW} & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -r} & 143 & 447.30 & Geen output in Excel \\
+ & & \texttt{\raggedright ./reconftw.sh -d internal.localdomain} & 3 & 1334.41 & Geen output in Excel \\
+ & & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -p} & 15 & 20.74 & Geen output in Excel \\
+ & & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -a} & 39 & 134.19 & Geen output in Excel \\
+\multirow{2}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{Sniper} & \texttt{\raggedright sniper -t 192.168.56.11 -m normal} & 0 & 3579.53 & CVE-2011-2523 (vsFTPd); CVE-2023-38408 (SSH) \\
+ & & \texttt{\raggedright sniper -f target.txt -m nuke} & 0 & 7743.83 & Open TCP: 21, 22, 80, 445, 3306; MAC: 08:00:27 \\
+\multirow{2}{*}{Webanalyse} & Sniper & \texttt{\raggedright sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Apache 2.2.8; paden: /phpMyAdmin/, /dvwa/ \\
+ & & \texttt{\raggedright sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Apache 2.2.8; paden: /dav/, /dvwa/, /phpMyAdmin/ \\
+\end{longtable}
+\end{landscape}
+}
+
+% \begin{landscape}
+% \setlength{\tabcolsep}{1pt} 
+% \begin{longtable}{lllp{2cm}p{1.2cm}p{4cm}}
+% \caption{Vergelijking van automatische reconnaissance-tools} \label{tab:vergelijking-recon-automatisch} \\
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endfirsthead
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \multirow{3}{*}{Poortscanning} & \multirow{3}{*}{AutoRecon} & \texttt{\raggedright autorecon 192.168.56.11 --service-scans http,https} & 17 & 4686.01 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; UDP: 53, 111, 137, 2049; geen robots.txt op poorten 80, 8180 \\
+%  & & \texttt{\raggedright autorecon 192.168.56.11 --ports 21,22,80,445,3306} & 15 & 4716.99 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL); HTTP: geen robots.txt; SMB: Enum4Linux, SMBMap \\
+%  & & \texttt{\raggedright autorecon 192.168.56.11 --single-target} & 18 & 4771.75 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; UDP: 53, 111, 137, 2049; geen robots.txt \\
+% \multirow{3}{*}{Poortscanning} & \multirow{3}{*}{CyberScan} & \texttt{\raggedright sudo python2 CyberScan.py -s 192.168.56.11 -p udp -d 53 -t 161} & 5 & 0.32 & UDP: IP bereikbaar, geen open poorten gedetecteerd \\
+%  & & \texttt{\raggedright sudo python2 CyberScan.py -s 192.168.56.11 -p scan -d 1 -t 65535} & 6 & 74.27 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz. \\
+%  & & \texttt{\raggedright sudo python2 CyberScan.py -s 192.168.56.11 -p scan -d 21 -t 8180} & 5 & 12.52 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz. \\
+% \multirow{2}{*}{Poortscanning} & LazyRecon & \texttt{\raggedright ./lazyrecon.sh -t 192.168.56.11} & 23 & 243.54 & Open TCP: 3306 (MySQL 5.0.51a), 5432 (PostgreSQL 8.3.0), 5900 (VNC), 6000 (X11); DNS: communicatiefout \\
+%  & & \texttt{\raggedright ./lazyrecon.sh -d metasploitable.localdomain} & - & - & Geen output beschikbaar in Excel \\
+% \multirow{5}{*}{Poortscanning} & \multirow{4}{*}{Sniper} & \texttt{\raggedright sniper -t 192.168.56.11 -m normal -w metasploitable} & 0 & 3579.53 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; UDP: 53, 137, 2049; MAC: 08:00:27:F1:30:6D \\
+%  & & \texttt{\raggedright sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP); HTTP: Apache 2.2.8, geen WAF \\
+%  & & \texttt{\raggedright sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Open TCP: 80 (HTTP); HTTP: Apache 2.2.8, geen security-headers, paden: /phpMyAdmin/, /dvwa/ \\
+%  & & \texttt{\raggedright sniper -t 192.168.56.11 -m fullportonly} & 0 & 20.94 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; UDP: 53, 2049 \\
+%  & & \texttt{\raggedright sniper -t 192.168.56.0/24 -m discover -w metasploitable} & 0 & 20.75 & Actieve hosts: 192.168.56.10, .11; Open TCP: 21, 22, 80; MAC: 08:00:27:F1:30:6D \\
+% \multirow{4}{*}{Poortscanning} & \multirow{3}{*}{RustScan} & \texttt{\raggedright rustscan -a 192.168.56.11} & 0 & 55.33 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; MAC: 08:00:27:F1:30:6D \\
+%  & & \texttt{\raggedright rustscan -a 192.168.56.11 -- -sV -oA rustscan\_nmap} & 16 & 199.15 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), 5900 (VNC), enz.; VNC: protocol 3.3 \\
+%  & & \texttt{\raggedright time rustscan -a 192.168.56.11 --top} & 48 & 59.99 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; OS: Unix/Linux \\
+%  & & \texttt{\raggedright rustscan -a 192.168.56.11 -p 21,22,23,25,80,3306,5432,5900} & 0 & 159.71 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 3306 (MySQL), 5432 (PostgreSQL), 5900 (VNC); Apache 2.2.8 \\
+% \multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{3}{*}{Nuclei} & \texttt{\raggedright nuclei -u 192.168.56.11 -t cves/ -t misconfiguration/} & 8 & 5035.19 & CVE-2012-1823 (PHP RCE); 11 ontbrekende HTTP-headers (o.a. Content-Security-Policy) \\
+%  & & \texttt{\raggedright nuclei -u http://192.168.56.11:80 -t http/cves/} & 5 & 1028.20 & CVE-2012-1823 (PHP RCE); 11 ontbrekende HTTP-headers \\
+%  & & \texttt{\raggedright nuclei -l open\_ports.txt -t cves/} & 7 & 1596.38 & CVE-2012-1823 (PHP RCE); poorten 3632, 2049 niet responsief \\
+% \multirow{4}{*}{Reconnaissance} & \multirow{4}{*}{ReconFTW} & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -r} & 143 & 447.30 & Geen specifieke output in Excel \\
+%  & & \texttt{\raggedright ./reconftw.sh -d internal.localdomain -s} & 3 & 1334.41 & Geen specifieke output in Excel \\
+%  & & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -p} & 15 & 20.74 & Geen specifieke output in Excel \\
+%  & & \texttt{\raggedright ./reconftw.sh -d 192.168.56.11 -a} & 39 & 134.19 & Geen specifieke output in Excel \\
+% \multirow{2}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{Sniper} & \texttt{\raggedright sniper -t 192.168.56.11 -m normal -w metasploitable} & 0 & 3579.53 & CVE-2011-2523 (vsFTPd); CVE-2023-38408 (SSH); Apache CVE's (o.a. CVE-2010-0425) \\
+%  & & \texttt{\raggedright sniper -f target.txt -m nuke -w metasploitable} & 0 & 7743.83 & Open TCP: 21 (FTP), 22 (SSH), 80 (HTTP), 445 (SMB), 3306 (MySQL), enz.; MAC: 08:00:27:F1:30:6D \\
+% \multirow{2}{*}{Webanalyse} & Sniper & \texttt{\raggedright sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Apache 2.2.8; paden: /phpMyAdmin/, /dvwa/, /mutillidae/; geen WAF \\
+%  & & \texttt{\raggedright sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Apache 2.2.8; paden: /dav/, /dvwa/, /phpMyAdmin/; geen WAF \\
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \setlength{\tabcolsep}{1.5pt} 
+% \begin{longtable}{lllp{2cm}p{1.2cm}p{3cm}}
+% \caption{Vergelijking van automatische reconnaissance-tools} \label{tab:vergelijking-recon-automatisch} \\
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endfirsthead
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \multirow{3}{*}{Poortscanning} & \multirow{3}{*}{AutoRecon} & \texttt{autorecon 192.168.56.11 --service-scans http,https} & 17 & 4686.01 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 111, 137, 2049 \\
+%  & & \texttt{autorecon 192.168.56.11 --ports 21,22,80,445,3306} & 15 & 4716.99 & Open TCP: 21, 22, 80, 445, 3306; HTTP: geen robots.txt \\
+%  & & \texttt{autorecon 192.168.56.11 --single-target} & 18 & 4771.75 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 111, 137, 2049 \\
+% \multirow{3}{*}{Poortscanning} & \multirow{3}{*}{CyberScan} & \texttt{sudo python2 CyberScan.py -s 192.168.56.11 -p udp -d 53 -t 161} & 5 & 0.32 & UDP: IP bereikbaar, geen open poorten \\
+%  & & \texttt{sudo python2 CyberScan.py -s 192.168.56.11 -p scan -d 1 -t 65535} & 6 & 74.27 & Open TCP: 21, 22, 80, 445, 3306, enz. \\
+%  & & \texttt{sudo python2 CyberScan.py -s 192.168.56.11 -p scan -d 21 -t 8180} & 5 & 12.52 & Open TCP: 21, 22, 80, 445, 3306, enz. \\
+% \multirow{2}{*}{Poortscanning} & LazyRecon & \texttt{./lazyrecon.sh -t 192.168.56.11} & 23 & 243.54 & Open TCP: 3306, 5432, 5900, 6000; DNS: communicatiefout \\
+%  & & \texttt{./lazyrecon.sh -d metasploitable.localdomain} & - & - & Geen output (niet in Excel) \\
+% \multirow{5}{*}{Poortscanning} & \multirow{4}{*}{Sniper} & \texttt{sniper -t 192.168.56.11 -m normal -w metasploitable} & 0 & 3579.53 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 137, 2049 \\
+%  & & \texttt{sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Open TCP: 21, 22, 80; HTTP: Apache 2.2.8, geen WAF \\
+%  & & \texttt{sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Open TCP: 80; HTTP: Apache 2.2.8, geen security-headers \\
+%  & & \texttt{sniper -t 192.168.56.11 -m fullportonly} & 0 & 20.94 & Open TCP: 21, 22, 80, 445, 3306, enz.; UDP: 53, 2049 \\
+%  & & \texttt{sniper -t 192.168.56.0/24 -m discover -w metasploitable} & 0 & 20.75 & Actieve hosts: 192.168.56.10, .11; Open TCP: 21, 22, 80 \\
+% \multirow{3}{*}{Poortscanning} & \multirow{3}{*}{RustScan} & \texttt{rustscan -a 192.168.56.11} & 0 & 55.33 & Open TCP: 21, 22, 80, 445, 3306, enz.; MAC: 08:00:27:F1:30:6D \\
+%  & & \texttt{rustscan -a 192.168.56.11 -- -sV -oA rustscan\_nmap} & 16 & 199.15 & Open TCP: 21, 22, 80, 445, 3306, 5900, enz.; VNC: protocol 3.3 \\
+%  & & \texttt{time rustscan -a 192.168.56.11 --top} & 48 & 59.99 & Open TCP: 21, 22, 80, 445, 3306, enz.; OS: Unix/Linux \\
+%  & & \texttt{rustscan -a 192.168.56.11 -p 21,22,23,25,80,3306,5432,5900} & 0 & 159.71 & Open TCP: 21, 22, 80, 3306, 5432, 5900; Apache 2.2.8 \\
+% \multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{3}{*}{Nuclei} & \texttt{nuclei -u 192.168.56.11 -t cves/ -t misconfiguration/} & 8 & 5035.19 & CVE-2012-1823 (PHP RCE); 11 ontbrekende HTTP-headers \\
+%  & & \texttt{nuclei -u http://192.168.56.11:80 -t http/cves/} & 5 & 1028.20 & CVE-2012-1823 (PHP RCE); 11 ontbrekende HTTP-headers \\
+%  & & \texttt{nuclei -l open\_ports.txt -t cves/} & 7 & 1596.38 & CVE-2012-1823 (PHP RCE); poorten 3632, 2049 niet responsief \\
+% \multirow{4}{*}{Reconnaissance} & \multirow{4}{*}{ReconFTW} & \texttt{./reconftw.sh -d 192.168.56.11 -r -o results/192.168.56.11} & 143 & 447.30 & Geen specifieke output in Excel \\
+%  & & \texttt{./reconftw.sh -d internal.localdomain -s} & 3 & 1334.41 & Geen specifieke output in Excel \\
+%  & & \texttt{./reconftw.sh -d 192.168.56.11 -p} & 15 & 20.74 & Geen specifieke output in Excel \\
+%  & & \texttt{./reconftw.sh -d 192.168.56.11 -a} & 39 & 134.19 & Geen specifieke output in Excel \\
+% \multirow{2}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{Sniper} & \texttt{sniper -t 192.168.56.11 -m normal -w metasploitable} & 0 & 3579.53 & CVE-2011-2523 (vsFTPd); CVE-2023-38408 (SSH); Apache CVE's \\
+%  & & \texttt{sniper -f target.txt -m nuke -w metasploitable} & 0 & 7743.83 & Open TCP: 21, 22, 80, 445, 3306, enz.; MAC: 08:00:27:F1:30:6D \\
+% \multirow{2}{*}{Webanalyse} & Sniper & \texttt{sniper -t 192.168.56.11 -m web} & 0 & 195.02 & Apache 2.2.8; paden: /phpMyAdmin/, /dvwa/; geen WAF \\
+%  & & \texttt{sniper -t 192.168.56.11 -m stealth} & 0 & 365.34 & Apache 2.2.8; paden: /dav/, /dvwa/, /phpMyAdmin/ \\
+% \end{longtable}
+% \end{landscape}

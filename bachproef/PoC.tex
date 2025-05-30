@@ -84,19 +84,23 @@
 
 \section{OSSTMM toegepast op de reconnaisance fase}
 
+De OSSTMM categoriseert de reconnaisansse in verschillende secties als human, physical, wireless, telecom, and data networks. Deze secties geven een gestructureerde framework voor het identificeren van vulnerabilitys en doelomgeving (zie ~\ref{tab:channels} OSSTMM secties).
+In deze studie focussen we enkel op human en data netwerk secties, deze komen overeen met de tools die voor dit onderzoek relevant zijn.
+In de tabel hieronder geeft de belangrijkste reconnaisansse doelen binnen deze secties, met details over de gebruikte tool en RAV-scores.
+
 \begin{table}[H]
   \centering
   \footnotesize
   \begin{tabularx}{\linewidth}{l l X l}
     \toprule
-    \textbf{activiteit} & \textbf{secties} & \textbf{gebruikkte tools} & \textbf{RAV score} \\
+    \textbf{activiteit} & \textbf{secties} & \textbf{gebruikkte tools} & \textbf{RAV-score} \\
     \midrule
-    Port scanning       & Data Network & Nmap, RustScan                       & V: Hoog,   A: Medium, T: Laag \\
+    Port scanning       & Data Network & Nmap, RustScan, Cyberscan, LazyRecon & V: Hoog,   A: Medium, T: Laag \\
     Banner grabbing     & Human        & Netcat, Telnet                       & V: Medium, A: Laag,   T: Medium \\
-    Web enumeration     & Data Network & Dirb, Gobuster, Nikto, Nuclei        & V: Medium, A: Medium, T: Laag \\
-    DNS/subdomain enum  & Data Network & DNSenum, DNSrecon, Amass             & V: Medium, A: None,   T: None \\
-    SMB enumeration     & Data Network & smbclient                            & V: Medium, A: Medium, T: Hoog \\
-    OSINT               & Human        & theHarvester, Spiderfoot, Datasploit & V: Medium, A: None,   T: Medium \\
+    Web enumeration     & Data Network & Gobuster, Nikto, Nuclei, ReconFTW    & V: Medium, A: Medium, T: Laag \\
+    DNS/subdomain enum  & Data Network & DNSenum, DNSrecon, Amass             & V: Medium, A: geen,   T: geen \\
+    SMB enumeration     & Data Network & smbclient, Autorecon, Sn1per         & V: Medium, A: Medium, T: Hoog \\
+    OSINT               & Human        & theHarvester, Spiderfoot, Datasploit & V: Medium, A: geen,   T: Medium \\
     \bottomrule
   \end{tabularx}
   \caption[activiteieten in OSSTMM]{\label{tab:recon}Reconnaissance activiteiten gemaped naar OSSTMM secties en RAV metrics.}
@@ -104,27 +108,27 @@
 
 \section{OSSTMM voor dit onderoek}
 
-OSSTMM is niet de enigste bestaande framework voor security testen zoals OWASP Testing Guide, NIST SP 800-115, PTES, ISSAF, etc.
-Echter is de OSSTMM de meest geschike framwork voor dit onderzoek omdat :
+OSSTMM is niet het enige bestaande framework voor securitytesten zoals OWASP Testing Guide, NIST SP 800-115, PTES, ISSAF, etc.
+Het is wel het meest geschike framwork voor dit onderzoek omdat :
 
 \begin{itemize}
-  \item Het is een open-source framework.
-  \item Het kan specefiek toegepast worden op de de reconnaissance-fase van pentests.
-  \item Meerdere secties en perspectieven mogelijk (human en technical)
-  \item De mogelijkheid om de tools en methoden te evalueren op basis van inhoud en niet alleen resultaten.
-  \item Op basis van de RAV score een analyse maken.
+  \item het een open-source framework is;
+  \item het specifiek toegepast kan worden op de de reconnaissance-fase van pentests;
+  \item meerdere secties en perspectieven mogelijk (human en technical) zijn;
+  \item er de mogelijkheid is om de tools en methoden te evalueren op basis van inhoud en niet alleen op basis van resultaten;
+  \item een analyse maken op basis van de RAV-score ~\autocite{Herzog}.
 \end{itemize}
 
 
 \section{Virtuele omgeving voor de PoC}
-Om een gecontroleerde en reproduceerbare evaluatie te maken voor de verschillende tools is er een virtuele lab opgezet met Oracle Virtualbox.
-In deze virtuele omgeving zijn er 2 verschillende machines opgezet in en geconfigureerd met statische IP adressen en verbonden via een intern netwerk.
+Om een gecontroleerde en reproduceerbare evaluatie te maken van de verschillende tools is er een virtueel lab opgezet met Oracle Virtualbox.
+In deze virtuele omgeving zijn er twee verschillende machines opgezet, geconfigureerd met statische IP adressen en verbonden via een intern netwerk.
 
 \begin{itemize}
-  \item Kali Linux 2024.2: de pentest machine voor reconnaissance. %\texttt{192.168.56.10}
-  \item Metasploitable 2: de doel machine met verschillende kwetsbaarheden. %\texttt{192.168.56.11}
+  \item Kali Linux 2024.2: de pentest machine voor reconnaissance.
+  \item Metasploitable 2: de doel machine met verschillende kwetsbaarheden.
 \end{itemize}
 
-Beide machines zijn verbonden met elkaar via een intern netwerk adapter, gebruik makende van de netwerknaam texttt{intnet}.
+Beide machines zijn verbonden met elkaar via een intern netwerk adapter, gebruik makende van de netwerknaam~\texttt{intnet}.
 Deze configuratie zorgt er voor dat de machines enkel maar met elkaar kunnen communiceren en niet met het internet of de host machine.
-Deze aanpak zorgt er voor dat er geen externe storingen zijn, vermindert de ethische en beveiligingsrisico's en zorgt voor het ongelimiteerde testen over alle applicatie lagen.
+Dit zorgt ervoor dat er geen externe storingen mogelijk zijn, vermindert de ethische en beveiligingsrisico's en zorgt voor een ongelimiteert testen over alle applicatie-lagen~\autocite{Georgia2014}.

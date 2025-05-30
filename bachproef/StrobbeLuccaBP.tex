@@ -46,7 +46,39 @@
 }
 
 % Other packages not already included can be imported here
+\usepackage{geometry}
+\usepackage{array}
+% \usepackage{lmodern}
 
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{booktabs} 
+\usepackage{multirow} 
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuratie voor listings (bash code opmaak)
+\lstset{
+    language=bash,
+    basicstyle=\footnotesize\ttfamily,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red}
+}
 %%---------- Document metadata -------------------------------------------------
 % Document metadata (must come before \begin{document})
 
@@ -171,7 +203,10 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
 \input{../voorstel/voorstel-inhoud}
-% \input{../graphics/controle.sh}
+\input{appendix/bash.tex}
+\input{appendix/manueel.tex}
+\input{appendix/automatisch.tex}
+
 
 %%---------- Andere bijlagen --------------------------------------------------
 % TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de

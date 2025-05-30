@@ -1,0 +1,293 @@
+\chapter{\IfLanguageName{dutch}{manueel}{manueel}}%
+\label{app:manueel}
+{\small
+\begin{landscape}
+\fontfamily{lmr}\selectfont
+\setlength{\tabcolsep}{1.5pt}
+\begin{longtable}{lllp{2cm}p{1.2cm}p{4cm}}
+\caption{Vergelijking van manuele reconnaissance-tools} \label{tab:vergelijking-recon-manueel} \\
+\toprule
+\textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multirow{2}{*}{Host discovery} & fping & \texttt{fping -a -g 192.168.56.0/24} & 3 & 11.36 & IP: 192.168.56.11 \\
+ & arp-scan & \texttt{arp-scan -i eth0 -- localnet} & 1 & 1.92 & MAC: 08:00:27:f1:30:6d \\
+\multirow{2}{*}{DNS lookup} & \multirow{2}{*}{dig} & \texttt{dig metasploitable.localdomain} & 41 & 0.08 & NXDOMAIN, geen A-record \\
+ & & \texttt{dig @192.168.56.1 version.bind txt} & 102 & 0.03 & BIND 9.4.2, kwetsbaar \\
+\multirow{4}{*}{Poortscanning} & \multirow{3}{*}{nmap} & \texttt{nmap -sS -sV -O -T4 192.168.56.11} & 1 & 67.16 & Poorten: 23; Linux 2.6.X \\
+ & & \texttt{nmap -p- 192.168.56.11} & 20 & 18.63 & 30 poorten open (21, 22, 80) \\
+ & & \texttt{nmap -sT 192.168.56.11} & 1 & 13.26 & 23 poorten open (21, 80) \\
+ & & \texttt{nmap -sU -p 53,69,161 192.168.56.11} & 1 & 14.54 & UDP: 53 open, 69/161 gefilterd \\
+\multirow{4}{*}{Service-detectie} & \multirow{2}{*}{nmap} & \texttt{nmap -sV -p 3306,5432,8180 --script=banner} & 1 & 44.48 & MySQL 5.0.51a, PostgreSQL 8.3.0 \\
+ & & \texttt{nmap -sV -O --version-all 192.168.56.11} & 0 & 122.43 & Poorten: 23; Linux 2.6.X \\
+ & nc & \texttt{nc -vn 192.168.56.11 23} & 0 & 521.81 & Telnet: vsFTPd 2.3.4 \\
+ & telnet & \texttt{telnet 192.168.56.11 23} & 0 & 310.15 & Telnet: login (passwd=password) \\
+\multirow{3}{*}{Firewall/Proxy} & nmap & \texttt{nmap -sA 192.168.56.11} & 2 & 13.40 & Poorten: ignored state \\
+ & wafw00f & \texttt{wafw00f http://192.168.56.11} & 79 & 0.38 & Geen WAF gedetecteerd \\
+ & nmap & \texttt{nmap --script=http-open-proxy -p80} & 1 & 13.45 & Poort 80 open \\
+\multirow{5}{*}{Webserver analyse} & \multirow{2}{*}{whatweb} & \texttt{whatweb http://192.168.56.11} & 81 & 5.07 & Apache 2.2.8, PHP 5.2.4 \\
+ & & \texttt{whatweb --log-object http://192.168.56.11} & 100 & 5.04 & Apache 2.2.8, PHP 5.2.4 \\
+ & curl & \texttt{curl -I http://192.168.56.11} & 41 & 0.06 & HTTP/1.1 200; Apache 2.2.8 \\
+ & nmap & \texttt{nmap --script=http-* -p80 192.168.56.11} & 1 & 10.28 & HTTP scripts uitgevoerd \\
+ & wget & \texttt{wget http://192.168.56.11/index.php} & 42 & 0.03 & Links: phpMyAdmin, DVWA \\
+\multirow{5}{*}{Directory enumeratie} & gobuster & \texttt{gobuster dir -u http://192.168.56.11} & 71 & 14.84 & Directories: /phpMyAdmin/, /dvwa/ \\
+ & dirb & \texttt{dirb http://192.168.56.11} & 15 & 48.77 & 55 directories gevonden \\
+ & dirsearch & \texttt{dirsearch -u http://192.168.56.11 -e .php} & 104 & 79.03 & DVWA, Mutillidae, phpMyAdmin \\
+ & ffuf & \texttt{ffuf -u http://192.168.56.11/FUZZ} & 24 & 23.17 & phpMyAdmin, TWiki, test \\
+ & feroxbuster & \texttt{feroxbuster -u http://192.168.56.11} & 102 & 167.36 & Mutillidae, phpMyAdmin, DVWA \\
+\multirow{6}{*}{Webapp analyse} & \multirow{5}{*}{curl} & \texttt{curl http://192.168.56.11/phpMyAdmin} & 19 & 0.05 & phpMyAdmin: loginpagina \\
+ & & \texttt{curl -v http://192.168.56.11/phpMyAdmin/...} & 17 & 0.06 & LFI-test: geen succes \\
+ & & \texttt{curl http://192.168.56.11/mutillidae} & 26 & 0.10 & Mutillidae 2.1.19, kwetsbaar \\
+ & & \texttt{curl http://192.168.56.11/dvwa/login.php} & 37 & 0.03 & DVWA: inlog admin/password \\
+ & & \texttt{curl http://192.168.56.11/twiki/bin/view} & 30 & 0.10 & TWiki: ongeauthenticeerde toegang \\
+ & wget & \texttt{wget http://192.168.56.11/phpMyAdmin/readme} & 72 & 0.04 & phpMyAdmin 3.1.1, CVE's \\
+ & joomscan & \texttt{joomscan --url http://192.168.56.11} & 5 & 11.46 & Joomla: FPD in index.php \\
+\multirow{7}{*}{SMB enumeratie} & nmap & \texttt{nmap --script=smb-enum-shares -p445} & 2 & 13.80 & SMB shares gedetecteerd \\
+ & smbclient & \texttt{smbclient -L //192.168.56.11 -N} & 38 & 0.11 & Shares: print\$, tmp, IPC\$ \\
+ & smbmap & \texttt{smbmap -H 192.168.56.11 -u ''} & 1 & 2.65 & Shares: print\$, tmp, opt \\
+ & \multirow{3}{*}{enum4linux} & \texttt{enum4linux -a 192.168.56.11} & 68 & 9.54 & Samba 3.0.20, tmp share \\
+ & & \texttt{enum4linux -P 192.168.56.11} & 91 & 0.57 & Geen wachtwoordcomplexiteit \\
+ & & \texttt{enum4linux -U 192.168.56.11} & 79 & 0.36 & Gebruikers: root, msfadmin \\
+ & rpcclient & \texttt{rpcclient -U "" 192.168.56.11} & 0 & 117.45 & 35 gebruikers, zwakke beveiliging \\
+NFS enumeratie & showmount & \texttt{showmount -e 192.168.56.11} & 38 & 0.01 & NFS export /* toegankelijk \\
+SNMP enumeratie & nmap & \texttt{nmap -sU -p161 --script=snmp-info} & 1 & 13.41 & Poort 161 gesloten \\
+RPC enumeratie & rpcinfo & \texttt{rpcinfo -p 192.168.56.11} & 21 & 0.02 & RPC: portmapper, NFS \\
+\multirow{5}{*}{Overige services} & ftp & \texttt{ftp 192.168.56.11} & 0 & 28.94 & Anonieme FTP-login mogelijk \\
+ & \multirow{2}{*}{telnet} & \texttt{telnet 192.168.56.11 23} & 0 & 20.04 & Telnet open \\
+ & & \texttt{telnet 192.168.56.11 25} & 0 & 310.00 & SMTP: Postfix (Ubuntu) \\
+ & curl & \texttt{curl -v ftp://192.168.56.11} & 37 & 0.03 & vsFTPd 2.3.4, anonieme login \\
+ & nmap & \texttt{nmap -p110,143,993,995 -sV} & 2 & 13.57 & Mailservices gesloten \\
+\multirow{2}{*}{VNC enumeratie} & vncviewer & \texttt{vncviewer 192.168.56.1:5900} & 0 & 14.44 & VNC: root desktop, passwd=password \\
+ & nmap & \texttt{nmap -p5900 --script=vnc-info} & 41 & 0.35 & VNC: protocol 3.3, zwakke beveiliging \\
+\multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{nmap} & \texttt{nmap --script=vuln -p- 192.168.56.11} & 6 & 376.39 & CVE's: vsFTPd backdoor \\
+ & & \texttt{nmap -sV --script=vulners} & 1 & 53.17 & CVE's: Apache, MySQL \\
+ & nikto & \texttt{nikto -h http://192.168.56.11} & 19 & 50.85 & 27 issues, incl. phpMyAdmin \\
+\end{longtable}
+\end{landscape}
+}
+
+% \begin{landscape}
+% \begin{longtable}{lllp{2cm}p{1.2cm}p{4cm}}
+% \caption{Vergelijking van manuele reconnaissance-tools} \label{tab:vergelijking-recon-manueel} \\
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endfirsthead
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \multirow{2}{*}{Host discovery} & fping & \texttt{fping -a -g 192.168.56.0/24} & 3 & 11.36 & IP: 192.168.56.11 \\
+%  & arp-scan & \texttt{arp-scan -i eth0 --localnet} & 1 & 1.92 & MAC: 08:00:27:f1:30:6d \\
+% \multirow{2}{*}{DNS lookup} & \multirow{2}{*}{dig} & \texttt{dig metasploitable.localdomain} & 41 & 0.08 & NXDOMAIN, geen A-record \\
+%  & & \texttt{dig @192.168.56.1 version.bind txt} & 102 & 0.03 & BIND 9.4.2, kwetsbaar \\
+% \multirow{4}{*}{Poortscanning} & \multirow{3}{*}{nmap} & \texttt{nmap -sS -sV -O -T4 192.168.56.11} & 1 & 67.16 & Poorten: 23; Linux 2.6.X \\
+%  & & \texttt{nmap -p- 192.168.56.11} & 20 & 18.63 & 30 poorten open (21, 22, 80) \\
+%  & & \texttt{nmap -sT 192.168.56.11} & 1 & 13.26 & 23 poorten open (21, 80) \\
+%  & & \texttt{nmap -sU -p 53,69,161 192.168.56.11} & 1 & 14.54 & UDP: 53 open, 69/161 gefilterd \\
+% \multirow{4}{*}{Service-detectie} & \multirow{2}{*}{nmap} & \texttt{nmap -sV -p 3306,5432,8180 --script=banner} & 1 & 44.48 & MySQL 5.0.51a, PostgreSQL 8.3.0 \\
+%  & & \texttt{nmap -sV -O --version-all 192.168.56.11} & 0 & 122.43 & Poorten: 23; Linux 2.6.X \\
+%  & nc & \texttt{nc -vn 192.168.56.11 23} & 0 & 521.81 & Telnet: vsFTPd 2.3.4 \\
+%  & telnet & \texttt{telnet 192.168.56.11 23} & 0 & 310.15 & Telnet: login (passwd=password) \\
+% \multirow{3}{*}{Firewall/Proxy} & nmap & \texttt{nmap -sA 192.168.56.11} & 2 & 13.40 & Poorten: ignored state \\
+%  & wafw00f & \texttt{wafw00f http://192.168.56.11} & 79 & 0.38 & Geen WAF gedetecteerd \\
+%  & nmap & \texttt{nmap --script=http-open-proxy -p80} & 1 & 13.45 & Poort 80 open \\
+% \multirow{5}{*}{Webserver analyse} & \multirow{2}{*}{whatweb} & \texttt{whatweb http://192.168.56.11} & 81 & 5.07 & Apache 2.2.8, PHP 5.2.4 \\
+%  & & \texttt{whatweb --log-object http://192.168.56.11} & 100 & 5.04 & Apache 2.2.8, PHP 5.2.4 \\
+%  & curl & \texttt{curl -I http://192.168.56.11} & 41 & 0.06 & HTTP/1.1 200; Apache 2.2.8 \\
+%  & nmap & \texttt{nmap --script=http-* -p80 192.168.56.11} & 1 & 10.28 & HTTP scripts uitgevoerd \\
+%  & wget & \texttt{wget http://192.168.56.11/index.php} & 42 & 0.03 & Links: phpMyAdmin, DVWA \\
+% \multirow{5}{*}{Directory enumeratie} & gobuster & \texttt{gobuster dir -u http://192.168.56.11} & 71 & 14.84 & Directories: /phpMyAdmin/, /dvwa/ \\
+%  & dirb & \texttt{dirb http://192.168.56.11} & 15 & 48.77 & 55 directories gevonden \\
+%  & dirsearch & \texttt{dirsearch -u http://192.168.56.11 -e .php} & 104 & 79.03 & DVWA, Mutillidae, phpMyAdmin \\
+%  & ffuf & \texttt{ffuf -u http://192.168.56.11/FUZZ} & 24 & 23.17 & phpMyAdmin, TWiki, test \\
+%  & feroxbuster & \texttt{feroxbuster -u http://192.168.56.11} & 102 & 167.36 & Mutillidae, phpMyAdmin, DVWA \\
+% \multirow{6}{*}{Webapplicatie analyse} & \multirow{5}{*}{curl} & \texttt{curl http://192.168.56.11/phpMyAdmin} & 19 & 0.05 & phpMyAdmin: loginpagina \\
+%  & & \texttt{curl -v http://192.168.56.11/phpMyAdmin/...} & 17 & 0.06 & LFI-test: geen succes \\
+%  & & \texttt{curl http://192.168.56.11/mutillidae} & 26 & 0.10 & Mutillidae 2.1.19, kwetsbaar \\
+%  & & \texttt{curl http://192.168.56.11/dvwa/login.php} & 37 & 0.03 & DVWA: inlog admin/password \\
+%  & & \texttt{curl http://192.168.56.11/twiki/bin/view} & 30 & 0.10 & TWiki: ongeauthenticeerde toegang \\
+%  & wget & \texttt{wget http://192.168.56.11/phpMyAdmin/readme} & 72 & 0.04 & phpMyAdmin 3.1.1, CVE's \\
+%  & joomscan & \texttt{joomscan --url http://192.168.56.11} & 5 & 11.46 & Joomla: FPD in index.php \\
+% \multirow{7}{*}{SMB enumeratie} & nmap & \texttt{nmap --script=smb-enum-shares -p445} & 2 & 13.80 & SMB shares gedetecteerd \\
+%  & smbclient & \texttt{smbclient -L //192.168.56.11 -N} & 38 & 0.11 & Shares: print\$, tmp, IPC\$ \\
+%  & smbmap & \texttt{smbmap -H 192.168.56.11 -u ''} & 1 & 2.65 & Shares: print\$, tmp, opt \\
+%  & \multirow{3}{*}{enum4linux} & \texttt{enum4linux -a 192.168.56.11} & 68 & 9.54 & Samba 3.0.20, tmp share \\
+%  & & \texttt{enum4linux -P 192.168.56.11} & 91 & 0.57 & Geen wachtwoordcomplexiteit \\
+%  & & \texttt{enum4linux -U 192.168.56.11} & 79 & 0.36 & Gebruikers: root, msfadmin \\
+%  & rpcclient & \texttt{rpcclient -U "" 192.168.56.11} & 0 & 117.45 & 35 gebruikers, zwakke beveiliging \\
+% NFS enumeratie & showmount & \texttt{showmount -e 192.168.56.11} & 38 & 0.01 & NFS export /* toegankelijk \\
+% SNMP enumeratie & nmap & \texttt{nmap -sU -p161 --script=snmp-info} & 1 & 13.41 & Poort 161 gesloten \\
+% RPC enumeratie & rpcinfo & \texttt{rpcinfo -p 192.168.56.11} & 21 & 0.02 & RPC: portmapper, NFS \\
+% \multirow{5}{*}{Overige services} & ftp & \texttt{ftp 192.168.56.11} & 0 & 28.94 & Anonieme FTP-login mogelijk \\
+%  & \multirow{2}{*}{telnet} & \texttt{telnet 192.168.56.11 23} & 0 & 20.04 & Telnet open \\
+%  & & \texttt{telnet 192.168.56.11 25} & 0 & 310.00 & SMTP: Postfix (Ubuntu) \\
+%  & curl & \texttt{curl -v ftp://192.168.56.11} & 37 & 0.03 & vsFTPd 2.3.4, anonieme login \\
+%  & nmap & \texttt{nmap -p110,143,993,995 -sV} & 2 & 13.57 & Mailservices gesloten \\
+% \multirow{2}{*}{VNC enumeratie} & vncviewer & \texttt{vncviewer 192.168.56.1:5900} & 0 & 14.44 & VNC: root desktop, passwd=password \\
+%  & nmap & \texttt{nmap -p5900 --script=vnc-info} & 41 & 0.35 & VNC: protocol 3.3, zwakke beveiliging \\
+% \multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{nmap} & \texttt{nmap --script=vuln -p- 192.168.56.11} & 6 & 376.39 & CVE's: vsFTPd backdoor \\
+%  & & \texttt{nmap -sV --script=vulners} & 1 & 53.17 & CVE's: Apache, MySQL \\
+%  & nikto & \texttt{nikto -h http://192.168.56.11} & 19 & 50.85 & 27 issues, incl. phpMyAdmin \\
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \setlength{\tabcolsep}{3pt}
+% \begin{longtable}{lllp{1.8cm}p{1cm}p{3.5cm}}
+% \caption{Vergelijking van manuele reconnaissance-tools} \label{tab:vergelijking-recon-manueel} \\
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endfirsthead
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \multirow{2}{*}{Host discovery} & fping & \texttt{fping -a -g 192.168.56.0/24} & 3 & 11.36 & IP: 192.168.56.11 \\
+%  & arp-scan & \texttt{arp-scan -i eth0 --localnet} & 1 & 1.92 & MAC: 08:00:27:f1:30:6d \\
+% \multirow{2}{*}{DNS lookup} & \multirow{2}{*}{dig} & \texttt{dig metasploitable.localdomain} & 41 & 0.08 & NXDOMAIN, geen A-record \\
+%  & & \texttt{dig @192.168.56.1 version.bind} & 102 & 0.03 & BIND 9.4.2, kwetsbaar \\
+% \multirow{4}{*}{Poortscanning} & \multirow{3}{*}{nmap} & \texttt{nmap -sS -sV -O -T4 192.168.56.11} & 1 & 67.16 & Poorten: 23; Linux 2.6.X \\
+%  & & \texttt{nmap -p- 192.168.56.11} & 20 & 18.63 & 30 poorten (21, 22, 80) \\
+%  & & \texttt{nmap -sT 192.168.56.11} & 1 & 13.26 & 23 poorten (21, 80) \\
+%  & & \texttt{nmap -sU -p 53,69,161} & 1 & 14.54 & UDP: 53 open, 69/161 gefilterd \\
+% \multirow{4}{*}{Service-detectie} & \multirow{2}{*}{nmap} & \texttt{nmap -sV -p 3306,5432,8180} & 1 & 44.48 & MySQL 5.0.51a, PostgreSQL 8.3.0 \\
+%  & & \texttt{nmap -sV -O --version-all} & 0 & 122.43 & Poorten: 23; Linux 2.6.X \\
+%  & nc & \texttt{nc -vn 192.168.56.11 23} & 0 & 521.81 & Telnet: vsFTPd 2.3.4 \\
+%  & telnet & \texttt{telnet 192.168.56.11 23} & 0 & 310.15 & Telnet: login (passwd=password) \\
+% \multirow{3}{*}{Firewall/Proxy} & nmap & \texttt{nmap -sA 192.168.56.11} & 2 & 13.40 & Poorten: ignored state \\
+%  & wafw00f & \texttt{wafw00f http://192.168.56.11} & 79 & 0.38 & Geen WAF gedetecteerd \\
+%  & nmap & \texttt{nmap --script=http-open-proxy} & 1 & 13.45 & Poort 80 open \\
+% \multirow{5}{*}{Webserver analyse} & \multirow{2}{*}{whatweb} & \texttt{whatweb http://192.168.56.11} & 81 & 5.07 & Apache 2.2.8, PHP 5.2.4 \\
+%  & & \texttt{whatweb --log-object http://...} & 100 & 5.04 & Apache 2.2.8, PHP 5.2.4 \\
+%  & curl & \texttt{curl -I http://192.168.56.11} & 41 & 0.06 & HTTP/1.1 200; Apache 2.2.8 \\
+%  & nmap & \texttt{nmap --script=http-* -p80} & 1 & 10.28 & HTTP scripts uitgevoerd \\
+%  & wget & \texttt{wget http://192.168.56.11/index.php} & 42 & 0.03 & Links: phpMyAdmin, DVWA \\
+% \multirow{5}{*}{Directory enumeratie} & gobuster & \texttt{gobuster dir -u http://192.168.56.11} & 71 & 14.84 & Directories: /phpMyAdmin/, /dvwa/ \\
+%  & dirb & \texttt{dirb http://192.168.56.11} & 15 & 48.77 & 55 directories gevonden \\
+%  & dirsearch & \texttt{dirsearch -u http://192.168.56.11} & 104 & 79.03 & DVWA, Mutillidae, phpMyAdmin \\
+%  & ffuf & \texttt{ffuf -u http://192.168.56.11/FUZZ} & 24 & 23.17 & phpMyAdmin, TWiki, test \\
+%  & feroxbuster & \texttt{feroxbuster -u http://192.168.56.11} & 102 & 167.36 & Mutillidae, phpMyAdmin, DVWA \\
+% \multirow{6}{*}{Webapplicatie analyse} & \multirow{5}{*}{curl} & \texttt{curl http://192.168.56.11/phpMyAdmin} & 19 & 0.05 & phpMyAdmin: loginpagina \\
+%  & & \texttt{curl -v http://192.168.56.11/phpMyAdmin/...} & 17 & 0.06 & LFI-test: geen succes \\
+%  & & \texttt{curl http://192.168.56.11/mutillidae} & 26 & 0.10 & Mutillidae 2.1.19, kwetsbaar \\
+%  & & \texttt{curl http://192.168.56.11/dvwa/login.php} & 37 & 0.03 & DVWA: inlog admin/password \\
+%  & & \texttt{curl http://192.168.56.11/twiki/...} & 30 & 0.10 & TWiki: ongeauthenticeerde toegang \\
+%  & wget & \texttt{wget http://192.168.56.11/phpMyAdmin/...} & 72 & 0.04 & phpMyAdmin 3.1.1, CVE's \\
+%  & joomscan & \texttt{joomscan --url http://192.168.56.11} & 5 & 11.46 & Joomla: FPD in index.php \\
+% \multirow{7}{*}{SMB enumeratie} & nmap & \texttt{nmap --script=smb-enum-shares} & 2 & 13.80 & SMB shares gedetecteerd \\
+%  & smbclient & \texttt{smbclient -L //192.168.56.11 -N} & 38 & 0.11 & Shares: print\$, tmp, IPC\$ \\
+%  & smbmap & \texttt{smbmap -H 192.168.56.11 -u ''} & 1 & 2.65 & Shares: print\$, tmp, opt \\
+%  & \multirow{3}{*}{enum4linux} & \texttt{enum4linux -a 192.168.56.11} & 68 & 9.54 & Samba 3.0.20, tmp share \\
+%  & & \texttt{enum4linux -P 192.168.56.11} & 91 & 0.57 & Geen wachtwoordcomplexiteit \\
+%  & & \texttt{enum4linux -U 192.168.56.11} & 79 & 0.36 & Gebruikers: root, msfadmin \\
+%  & rpcclient & \texttt{rpcclient -U "" 192.168.56.11} & 0 & 117.45 & 35 gebruikers, zwakke beveiliging \\
+% NFS enumeratie & showmount & \texttt{showmount -e 192.168.56.11} & 38 & 0.01 & NFS export /* toegankelijk \\
+% SNMP enumeratie & nmap & \texttt{nmap -sU -p161 --script=snmp-info} & 1 & 13.41 & Poort 161 gesloten \\
+% RPC enumeratie & rpcinfo & \texttt{rpcinfo -p 192.168.56.11} & 21 & 0.02 & RPC: portmapper, NFS \\
+% \multirow{5}{*}{Overige services} & ftp & \texttt{ftp 192.168.56.11} & 0 & 28.94 & Anonieme FTP-login mogelijk \\
+%  & \multirow{2}{*}{telnet} & \texttt{telnet 192.168.56.11 23} & 0 & 20.04 & Telnet open \\
+%  & & \texttt{telnet 192.168.56.11 25} & 0 & 310.00 & SMTP: Postfix (Ubuntu) \\
+%  & curl & \texttt{curl -v ftp://192.168.56.11} & 37 & 0.03 & vsFTPd 2.3.4, anonieme login \\
+%  & nmap & \texttt{nmap -p110,143,993,995 -sV} & 2 & 13.57 & Mailservices gesloten \\
+% \multirow{2}{*}{VNC enumeratie} & vncviewer & \texttt{vncviewer 192.168.56.1:5900} & 0 & 14.44 & VNC: root desktop, passwd=password \\
+%  & nmap & \texttt{nmap -p5900 --script=vnc-info} & 41 & 0.35 & VNC: protocol 3.3, zwakke beveiliging \\
+% \multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{nmap} & \texttt{nmap --script=vuln -p-} & 6 & 376.39 & CVE's: vsFTPd backdoor \\
+%  & & \texttt{nmap -sV --script=vulners} & 1 & 53.17 & CVE's: Apache, MySQL \\
+%  & nikto & \texttt{nikto -h http://192.168.56.11} & 19 & 50.85 & 27 issues, incl. phpMyAdmin \\
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \begin{longtable}{lllp{2cm}p{1cm}p{3cm}}
+% \caption{Vergelijking van manuele reconnaissance-tools} \label{tab:vergelijking-recon-manueel} \\
+% \small
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endfirsthead
+% \toprule
+% \textbf{Categorie} & \textbf{Tool} & \textbf{Code} & \textbf{CPU (\%)} & \textbf{Tijd (s)} & \textbf{Output (samenvatting)} \\
+% \midrule
+% \endhead
+% \midrule
+% \multicolumn{6}{r}{\textit{Vervolg op volgende pagina}} \\
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \multirow{2}{*}{Host discovery} & fping & \texttt{fping -a -g 192.168.56.0/24} & 3 & 11.36 & IP: 192.168.56.11 (metasploitable2) \\
+%  & arp-scan & \texttt{arp-scan --interface=eth0 --localnet} & 1 & 1.92 & MAC: 08:00:27:f1:30:6d \\
+% \multirow{2}{*}{DNS lookup} & \multirow{2}{*}{dig} & \texttt{dig metasploitable.localdomain} & 41 & 0.08 & NXDOMAIN, geen A-record \\
+%  & & \texttt{dig @192.168.56.1 version.bind txt chaos} & 102 & 0.03 & BIND 9.4.2, verouderd, kwetsbaar \\
+% \multirow{4}{*}{Poortscanning} & \multirow{3}{*}{nmap} & \texttt{nmap -sS -sV -O -T4 192.168.56.11} & 1 & 67.16 & Open poorten: 23; Linux 2.6.X \\
+%  & & \texttt{nmap -p- 192.168.56.11} & 20 & 18.63 & 30 open poorten, incl. 21, 22, 80 \\
+%  & & \texttt{nmap -sT 192.168.56.11} & 1 & 13.26 & 23 open poorten, incl. 21, 80 \\
+%  & & \texttt{nmap -sU -p 53,69,161 192.168.56.11} & 1 & 14.54 & UDP: 53 open, 69/161 gefilterd \\
+% \multirow{4}{*}{Service-detectie} & \multirow{2}{*}{nmap} & \texttt{nmap -sV -p 3306,5432,8180 --script=banner} & 1 & 44.48 & MySQL 5.0.51a, PostgreSQL 8.3.0, Tomcat 1.1 \\
+%  & & \texttt{nmap -sV -O --version-all 192.168.56.11} & 0 & 122.43 & Open poorten: 23; Linux 2.6.X \\
+%  & nc & \texttt{nc -vn 192.168.56.11 23} & 0 & 521.81 & Telnet: vsFTPd 2.3.4 \\
+%  & telnet & \texttt{telnet 192.168.56.11 23} & 0 & 310.15 & Telnet: login mogelijk (passwd=password) \\
+% \multirow{3}{*}{Firewall/Proxy} & nmap & \texttt{nmap -sA 192.168.56.11} & 2 & 13.40 & Poorten in ignored state \\
+%  & wafw00f & \texttt{wafw00f http://192.168.56.11/} & 79 & 0.38 & Geen WAF gedetecteerd \\
+%  & nmap & \texttt{nmap --script=http-open-proxy -p80 192.168.56.11} & 1 & 13.45 & Poort 80 open \\
+% \multirow{5}{*}{Webserver analyse} & \multirow{2}{*}{whatweb} & \texttt{whatweb http://192.168.56.11} & 81 & 5.07 & Apache 2.2.8, PHP 5.2.4, WebDAV \\
+%  & & \texttt{whatweb --log-object @ http://192.168.56.11} & 100 & 5.04 & Apache 2.2.8, PHP 5.2.4, WebDAV \\
+%  & curl & \texttt{curl -I http://192.168.56.11/} & 41 & 0.06 & HTTP/1.1 200; Apache 2.2.8 \\
+%  & nmap & \texttt{nmap --script=http-* -p80 192.168.56.11} & 1 & 10.28 & HTTP scripts uitgevoerd \\
+%  & wget & \texttt{wget http://192.168.56.11/index.php -O index.html} & 42 & 0.03 & Links naar phpMyAdmin, DVWA, WebDAV \\
+% \multirow{5}{*}{Directory enumeratie} & gobuster & \texttt{gobuster dir -u http://192.168.56.11/ -w ...} & 71 & 14.84 & Directories: /phpMyAdmin/, /dvwa/ \\
+%  & dirb & \texttt{dirb http://192.168.56.11/} & 15 & 48.77 & 55 directories gevonden \\
+%  & dirsearch & \texttt{dirsearch -u http://192.168.56.11 -e .php,.bak,.orig} & 104 & 79.03 & DVWA, Mutillidae, phpMyAdmin \\
+%  & ffuf & \texttt{ffuf -u http://192.168.56.11/FUZZ -w ...} & 24 & 23.17 & phpMyAdmin, TWiki, test \\
+%  & feroxbuster & \texttt{feroxbuster -u http://192.168.56.11 -x php,bak,old} & 102 & 167.36 & Mutillidae, phpMyAdmin, DVWA \\
+% \multirow{6}{*}{Webapplicatie analyse} & \multirow{5}{*}{curl} & \texttt{curl -s http://192.168.56.11/phpMyAdmin/} & 19 & 0.05 & phpMyAdmin: loginpagina, mcrypt ontbreekt \\
+%  & & \texttt{curl -v "http://192.168.56.11/phpMyAdmin/index.php?..."} & 17 & 0.06 & LFI-test: geen succes \\
+%  & & \texttt{curl http://192.168.56.11/mutillidae/} & 26 & 0.10 & Mutillidae 2.1.19, kwetsbaar \\
+%  & & \texttt{curl http://192.168.56.11/dvwa/login.php} & 37 & 0.03 & DVWA: standaard inlog (admin/password) \\
+%  & & \texttt{curl http://192.168.56.11/twiki/bin/view} & 30 & 0.10 & TWiki: ongeauthenticeerde toegang \\
+%  & wget & \texttt{wget http://192.168.56.11/phpMyAdmin/readme -O readme.txt} & 72 & 0.04 & phpMyAdmin 3.1.1, meerdere CVE's \\
+%  & joomscan & \texttt{joomscan --url http://192.168.56.11} & 5 & 11.46 & Joomla: FPD in index.php \\
+% \multirow{7}{*}{SMB enumeratie} & nmap & \texttt{nmap --script=smb-enum-shares.nse -p445 192.168.56.11} & 2 & 13.80 & SMB shares gedetecteerd \\
+%  & smbclient & \texttt{smbclient -L \textbackslash\textbackslash 192.168.56.11 -N} & 38 & 0.11 & Shares: print\$, tmp, IPC\$ \\
+%  & smbmap & \texttt{smbclient -L //192.168.56.11 -U ''} & 1 & 2.65 & Shares: print\$, tmp, opt \\
+%  & \multirow{3}{*}{enum4linux} & \texttt{enum4linux -a 192.168.56.11} & 68 & 9.54 & Samba 3.0.20, tmp share \\
+%  & & \texttt{enum4linux -P 192.168.56.11} & 91 & 0.57 & Geen wachtwoordcomplexiteit \\
+%  & & \texttt{enum4linux -U 192.168.56.11} & 79 & 0.36 & Gebruikers: root, msfadmin \\
+%  & rpcclient & \texttt{rpcclient -U "" 192.168.56.11 ...} & 0 & 117.45 & 35 gebruikers, zwakke beveiliging \\
+% NFS enumeratie & showmount & \texttt{showmount -e 192.168.56.11} & 38 & 0.01 & NFS export /* toegankelijk \\
+% SNMP enumeratie & nmap & \texttt{nmap -sU -p 161 --script=snmp-info 192.168.56.11} & 1 & 13.41 & Poort 161 gesloten \\
+% RPC enumeratie & rpcinfo & \texttt{rpcinfo -p 192.168.56.11} & 21 & 0.02 & RPC-diensten: portmapper, NFS \\
+% \multirow{5}{*}{Overige services} & ftp & \texttt{ftp 192.168.56.11} & 0 & 28.94 & Anonieme FTP-login mogelijk \\
+%  & \multirow{2}{*}{telnet} & \texttt{telnet 192.168.56.11 23} & 0 & 20.04 & Telnet open \\
+%  & & \texttt{telnet 192.168.56.11 25} & 0 & 310.00 & SMTP: Postfix (Ubuntu) \\
+%  & curl & \texttt{curl -v -l ftp://192.168.56.11/} & 37 & 0.03 & vsFTPd 2.3.4, anonieme login \\
+%  & nmap & \texttt{nmap -p110,143,993,995 -sV 192.168.56.11} & 2 & 13.57 & Mailservices gesloten \\
+% \multirow{2}{*}{VNC enumeratie} & vncviewer & \texttt{vncviewer 192.168.56.1:5900} & 0 & 14.44 & VNC: root desktop, passwd=password \\
+%  & nmap & \texttt{nmap -p5900 --script=vnc-info 192.168.56.11} & 41 & 0.35 & VNC: protocol 3.3, zwakke beveiliging \\
+% \multirow{3}{*}{Kwetsbaarheidsscanning} & \multirow{2}{*}{nmap} & \texttt{nmap --script=default,vuln -p- 192.168.56.11} & 6 & 376.39 & Meerdere CVE's, incl. vsFTPd backdoor \\
+%  & & \texttt{nmap -sV --script=vulners 192.168.56.11} & 1 & 53.17 & Meerdere CVE's, incl. Apache, MySQL \\
+%  & nikto & \texttt{nikto -h http://192.168.56.11/} & 19 & 50.85 & 27 issues, incl. phpMyAdmin \\
+% \end{longtable}
+% \end{landscape}
+
+

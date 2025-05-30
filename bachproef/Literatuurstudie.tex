@@ -35,7 +35,7 @@ Zonder pentesten kunnen bedrijven verschillende risico's oplopen:
 
 \begin{itemize}
     \item \textbf{Financiële schade:} volgens IBM kan een data lek een bedrijf €4,88 miljoen kosten inclusief boetes en herstelkosten \autocite{IBM2023}
-    \item \textbf{Operationele downtime:} vele aanvallen lijden tot een gemiddelde van 21 dagen downtime \autocite{DBIR2023}
+    \item \textbf{Operationele downtime:} Aanvallen hebben een gemiddelde van 38 dagen hersteltijd nodig \autocite{DBIR2023}
     \item \textbf{Reputatie schade:} Een publiekelijk geweten cyberaanval kan ervoor zorgen dat een bedrijf 60\% van zijn klanten verliest \autocite{Ponemon2022}
 \end{itemize}
 
@@ -57,7 +57,7 @@ De reconnaissance kunnen we opsplitsen in een passieve en een actieve kant, elke
 Bij passieve reconnaissance is het doel om informatie te verzamelen zonder dat er direct contact is tussen het doelwit en de pentester.
 Hier zijn er verschillende technieken voor zoals de OSINT (Open Source Intelligence) dat gebruik maakt van publieke bronnen zoals databases, sociale media en forums \autocite{Dalalana2017}. 
 Shodan maakt gebruik van scanning van IoT apparaten en poorten op toegankelijke internetverbindingen \autocite{Monero2025}.
-Deze techniek heeft een zeer lage kans op detectie, maar dit beperkt de diepgang, Hiermee is er slechts 40\% van de kwetsbaarheden dat aan het licht komt \parencite{Mahin2014}.
+Deze techniek heeft een zeer lage kans op detectie, maar dit beperkt de diepgang, Hiermee komt er slechts een klein deel van de kwetsbaarheden aan het licht \parencite{ANDRESS2014}.
 Bij de actieve reconnaissance staat de pentester echter wel direct in contact met het doelwit om informatie te verkrijgen, hier bestaan ook vele technieken voor zoals een Portscanner die open poorten en services kan detecteren \autocite{Monero2025}. 
 Vulnerability scanning is ook een techniek om automatisch bekende kwetsbaarheden te detecteren \autocite{GOEL2015}. 
 Deze testen hebben wel een hogere nauwkeurigheid tot 92\% bij geavanceerde tools maar dit kan firewalls of IPS systemen activeren \parencite{Li2022}.
@@ -77,7 +77,7 @@ Om pentests te automatiseren, zijn er verschillende tools beschikbaar om effici�
 Onder andere AutoRecon, Cyberscan, Sn1per, RustScan, Nuclei, LazyRecon en ReconFTW deze tools zijn vaak open source en zijn krachtige tools ontwikkeld om het proces van reconnaissance te versnellen \autocite{Shebli}.
 
 \section{Vergelijkingen}
-Automatisering kan de efficiëntie en snelheid van de reconnaissance-fase verhogen. Er zijn veel tools die snel een netwerk kunnen scannen en de kwetsbaarheden kunnen detecteren. 
+Automatisering kan de efficiëntie en snelheid van de reconnaissance-fase verbeteren. Er zijn veel tools die snel een netwerk kunnen scannen en de kwetsbaarheden kunnen detecteren. 
 Door automatisatie kunnen organisaties sneller en kosteneffectieve tests uitvoeren. Deze automatisatie kan echter wel leiden tot een kwaliteitsverlies, d.w.z. dat het systeem mogelijks niet alle kwetsbaarheden vindt \parencite{peris}. 
 Meer diepgaande Scans gebeuren vaak handmatig, deze zijn flexibeler dan een geautomatiseerde test. Met de handmatige aanpak kun je makkelijker complexe kwetsbaarheden terugvinden die niet makkelijk te detecteren vallen bij een geautomatiseerde tool \parencite{techtarget2023}. 
 Het kiezen tussen een handmatige of een geautomatiseerde pentest komt vaak voor, deze keuze hangt af van de specifieke vereisten van de organisatie. \textcite{Monero2025} analyseerde telkens 50 cases studies waar er een geautomatiseerde en een hybride aanpak kwetsbaarheden detecteerde, waar de studie een hybride aanpak nam konden ze in deze testcase 85\% van de kwetsbaarheden detecteren, tegenover de 70\% bij volledige automatisering.

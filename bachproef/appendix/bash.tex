@@ -1,6 +1,14 @@
+\chapter{\IfLanguageName{dutch}{Appendix: Reconnaissance Script}{Appendix: Reconnaissance Script}}%
+\label{app:recon-script}
+
+\section{Reconnaissance Bash Script}
+Hieronder wordt het bash-script weergegeven dat is gebruikt voor de betrouwbaarheid van iedere comando to berekeken van de manuele reconnaissance methode, inclusief tijd- en CPU-metingen, zoals beschreven in het hoodstuk ~\ref{ch:Proof of Concept} Proof of Concept.
+
+\begin{lstlisting}[language=bash, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny, breaklines=true, caption={Bash-script voor geautomatiseerde reconnaissance}, label={lst:recon-script}]
+
 #!/bin/bash
 
-# Script om reconnaissance-commando's to automatiseren als controlole op betrouwbaarheid
+# Script om reconnaissance-commando's te automatiseren met tijd- en CPU-metingen
 
 OUTPUT_DIR="recon_results"
 mkdir -p "$OUTPUT_DIR"
@@ -11,7 +19,7 @@ touch "$ERROR_LOG"
 TARGET="192.168.56.11"
 TIMEOUT=400
 
-# commandos per categorie (gebaseerd op exel,exclusief interactieve commandos)
+# Commandos per categorie (gebaseerd op Excel, exclusief interactieve commandos)
 declare -A COMMANDS=(
     ["Netwerk- en Hostontdekking"]="netdiscover -i eth0
 fping -a -g 192.168.56.0/24
@@ -66,6 +74,7 @@ nmap -p5900 --script=vnc-info $TARGET"
     ["Kwetsbaarheidsscanning"]="nikto -h http://$TARGET/"
 )
 
+# Functie om CPU-gebruik te meten
 monitor_cpu() {
     local pid=$1
     local output_file=$2
@@ -73,11 +82,11 @@ monitor_cpu() {
     local cpu_usage
 
     while kill -0 $pid 2>/dev/null; do
-        cpu_usage=$(pidstat -p $pid 1 1 | tail -n 1 | awk '{print $8}' 2>/dev/null)
+        cpu_usage=$(ps -p $pid -o %cpu --no-headers 2>/dev/null)
         if [[ -n "$cpu_usage" ]]; then
             echo "CPU-gebruik ($cmd_name): ${cpu_usage}% (Tijd: $(date))" >> "$output_file"
         fi
-        sleep 0.1
+        sleep 1
     done
 }
 
@@ -98,11 +107,15 @@ for CATEGORY in "${!COMMANDS[@]}"; do
                 echo "Run $RUN van 3" >> "$OUTPUT_FILE"
                 echo "Tijd: $(date)" >> "$OUTPUT_FILE"
                 
-                (time timeout $TIMEOUT bash -c "$CMD" 2>> "$ERROR_LOG") >> "$OUTPUT_FILE" 2>&1 &
+                # Start het commando in de achtergrond en vang de PID op
+                { time timeout $TIMEOUT bash -c "$CMD" 2>> "$ERROR_LOG" ; } >> "$OUTPUT_FILE" 2>&1 &
                 CMD_PID=$!
-                monitor_cpu $CMD_PID "$OUTPUT_FILE" "$CMD" &
-                wait $CMD_PID
 
+                # Start CPU-monitoring in de achtergrond
+                monitor_cpu $CMD_PID "$OUTPUT_FILE" "$CMD" &
+
+                # Wacht tot het commando klaar is
+                wait $CMD_PID
                 if [[ $? -eq 124 ]]; then
                     echo "Commando afgebroken: time-out na $TIMEOUT seconden" | tee -a "$OUTPUT_FILE" "$ERROR_LOG"
                 fi
@@ -115,39 +128,9 @@ for CATEGORY in "${!COMMANDS[@]}"; do
     echo "Categorie $CATEGORY voltooid. Resultaten opgeslagen in $OUTPUT_FILE"
 done
 
-
-# for CATEGORY in "${!COMMANDS[@]}"; do
-#     echo "***"
-#     echo "Automatiseren van categorie: $CATEGORY"
-#     echo "***"
-
-#     OUTPUT_FILE="$OUTPUT_DIR/${CATEGORY// /_}.txt"
-#     echo "Resultaten voor $CATEGORY" > "$OUTPUT_FILE"
-#     echo "Gestart op: $(date)" >> "$OUTPUT_FILE"
-#     echo "----------------------------------------" >> "$OUTPUT_FILE"
-
-#     while IFS= read -r CMD; do
-#         if [[ -n "$CMD" ]]; then
-#             echo "  Uitvoeren van commando: $CMD" | tee -a "$OUTPUT_FILE"
-#             for RUN in {1..3}; do
-#                 echo "Run $RUN van 3" >> "$OUTPUT_FILE"
-#                 echo "Tijd: $(date)" >> "$OUTPUT_FILE"
-                
-#                 { time timeout $TIMEOUT bash -c "$CMD" 2>> "$ERROR_LOG" ; } >> "$OUTPUT_FILE" 2>&1
-#                 if [[ $? -eq 124 ]]; then
-#                     echo "Commando afgebroken: time-out na $TIMEOUT seconden" | tee -a "$OUTPUT_FILE" "$ERROR_LOG"
-#                 fi
-#                 echo "----------------------------------------" >> "$OUTPUT_FILE"
-#                 sleep 2
-#             done
-#         fi
-#     done <<< "${COMMANDS[$CATEGORY]}"
-
-#     echo "Categorie $CATEGORY voltooid. Resultaten opgeslagen in $OUTPUT_FILE"
-# done
-
 if [[ -s "$ERROR_LOG" ]]; then
     echo "Fouten gedetecteerd. Controleer $ERROR_LOG voor details."
 else
     echo "Geen fouten gedetecteerd."
 fi
+\end{lstlisting}
