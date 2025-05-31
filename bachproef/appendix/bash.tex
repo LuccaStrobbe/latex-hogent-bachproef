@@ -1,14 +1,14 @@
-\chapter{\IfLanguageName{dutch}{Appendix: Reconnaissance Script}{Appendix: Reconnaissance Script}}%
+\chapter{\IfLanguageName{dutch}{Reconnaissance Script}{Reconnaissance Script}}%
 \label{app:recon-script}
 
-\section{Reconnaissance Bash Script}
-Hieronder wordt het bash-script weergegeven dat is gebruikt voor de betrouwbaarheid van iedere comando to berekeken van de manuele reconnaissance methode, inclusief tijd- en CPU-metingen, zoals beschreven in het hoodstuk ~\ref{ch:Proof of Concept} Proof of Concept.
+\section{Reconnaissance bash script}
+Hieronder wordt het bash-script weergegeven dat is gebruikt voor de betrouwbaarheid van ieder comando te berekeken van de manuele reconnaissance-methode, inclusief tijd- en CPU-metingen, zoals beschreven in het hoofdstuk ~\ref{ch:Proof of Concept} Proof of Concept.
 
-\begin{lstlisting}[language=bash, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny, breaklines=true, caption={Bash-script voor geautomatiseerde reconnaissance}, label={lst:recon-script}]
+\begin{lstlisting}[language=bash, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\tiny, breaklines=true, caption={Bash-script voor betroubaarheid}, label={lst:recon-script}]
 
 #!/bin/bash
 
-# Script om reconnaissance-commando's te automatiseren met tijd- en CPU-metingen
+# Script om reconnaissance-commando's te testen op betroubaarheid met tijd- en CPU-metingen
 
 OUTPUT_DIR="recon_results"
 mkdir -p "$OUTPUT_DIR"
@@ -19,7 +19,6 @@ touch "$ERROR_LOG"
 TARGET="192.168.56.11"
 TIMEOUT=400
 
-# Commandos per categorie (gebaseerd op Excel, exclusief interactieve commandos)
 declare -A COMMANDS=(
     ["Netwerk- en Hostontdekking"]="netdiscover -i eth0
 fping -a -g 192.168.56.0/24
@@ -74,7 +73,6 @@ nmap -p5900 --script=vnc-info $TARGET"
     ["Kwetsbaarheidsscanning"]="nikto -h http://$TARGET/"
 )
 
-# Functie om CPU-gebruik te meten
 monitor_cpu() {
     local pid=$1
     local output_file=$2
@@ -107,15 +105,12 @@ for CATEGORY in "${!COMMANDS[@]}"; do
                 echo "Run $RUN van 3" >> "$OUTPUT_FILE"
                 echo "Tijd: $(date)" >> "$OUTPUT_FILE"
                 
-                # Start het commando in de achtergrond en vang de PID op
                 { time timeout $TIMEOUT bash -c "$CMD" 2>> "$ERROR_LOG" ; } >> "$OUTPUT_FILE" 2>&1 &
                 CMD_PID=$!
 
-                # Start CPU-monitoring in de achtergrond
                 monitor_cpu $CMD_PID "$OUTPUT_FILE" "$CMD" &
-
-                # Wacht tot het commando klaar is
                 wait $CMD_PID
+
                 if [[ $? -eq 124 ]]; then
                     echo "Commando afgebroken: time-out na $TIMEOUT seconden" | tee -a "$OUTPUT_FILE" "$ERROR_LOG"
                 fi

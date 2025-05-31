@@ -26,22 +26,22 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-Om de onderzoeksvraag te kunnen beantwoorden zal de aanpak een combinatie zijn van methoden. Waar er zal onder andere gebruik
-gemaakt worden van een literatuurstudie, onderzoeken en vergelijkende analyses. Hieronder zijn de stappen beschreven.
+Om de onderzoeksvraag te kunnen beantwoorden zal de aanpak een combinatie zijn van methoden. Er zal onder andere gebruik
+gemaakt worden van een literatuurstudie, onderzoeken en vergelijkende analyses. Hieronder staan de stappen beschreven.
 
 \section{Literatuurstudie}
 
 De literatuurstudie zal de basis vormen voor dit onderzoek. Door een grondige analyse te maken van de reeds bestaande tools en studies,
-die bijdragen in de reconnaissance-fase van pentests, is het mogelijk om overzicht te krijgen van de huidige situatie.
-Hierbij spelen de bevindingen van~\textcite{Shah,Kothia,otherShah2019} een rol: zij tonen de voordelen en beperkingen aan binnen de reconnaissance-fase.
+die bijdragen in de reconnaissancefase van pentests, is het mogelijk om overzicht te krijgen van de huidige situatie.
+Hierbij spelen de bevindingen van~\textcite{Shah,Kothia,otherShah2019} een rol: zij tonen de voordelen en beperkingen aan binnen de reconnaissancefase.
 Ook zal er rekening gehouden worden met nieuwe technologieën zoals die van ~\textcite{Ghanem,Hoang,Monero2025} deze maken gebruik van
 reinforcement learning (RL), Intelligent Automated Penetration Testing System (IAPTS) en POMDP-modellen. De implementatie van bestaande
-tools zoals AutoRecon en Recon-ng omvat ook een grondige analyse ~\autocite{Shebli}.
-De resultaten van deze literatuurstudie dienen om een kader voor de verdere ontwikkeling van dit onderzoek.
+tools zoals AutoRecon en Recon-ng omvat een grondige analyse ~\autocite{Shebli}.
+De resultaten van deze literatuurstudie dienen als kader voor de verdere ontwikkeling van dit onderzoek.
 
 \section{Experimenteel onderzoek}
 
-Een Proof of Concept (PoC) zal de effectiviteit van de automatisering in de reconnaisance-fase kunnen demonstreren.
+Een Proof of Concept (PoC) zal de effectiviteit van de automatisering in de reconnaisancefase kunnen demonstreren.
 % Om de effectiviteit van de automatisering te kunnen demonstreren in de reconnaissance-fase zal er een Proof of Concept (PoC) opgestart worden.
 Dit bevat de implementatie van een workflow met behulp van automatisatietools waaronder AutoRecon en Recon-ng. 
 Deze workflow test de werking op een gesimuleerd netwerk waar er bekende kwetsbaarheden op staan om via deze data de uitvoeringstijd,
@@ -89,31 +89,32 @@ De verzamelde informatie zal als basis dienen voor de evaluatie op nauwkeurighei
 %     de laatste stap van de methodologie van OSSTMM is het analyseren van de verzamelde gegevens en het opstellen van een rapport.
 % \end{itemize}
 
-\section{Instroductie tot OSSTMM}
+\section{Introductie tot OSSTMM}
 
 Security testen en penetratietesten hebben niet alleen de praktische tools nodig om de testen uit te voeren, maar ze hebben ook een gestructureerde wetenschappelijke methodologie nodig.
-De Open Source Security Testing Methodology Manual (OSSTMM) biedt een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door de Institute for Security and Open Methodologies (ISECOM).
-Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak voor de evaluatie en de verbeterde van de operationele security ~\autocite{Herzog}.
+De Open Source Security Testing Methodology Manual (OSSTMM) biedt een betrouwbare, meetbare en herhaalbare structuur aan, ontworpen door het Institute for Security and Open Methodologies (ISECOM).
+Het OSSTMM framework zorgt voor een wetenschappelijk onderbouwde aanpak voor de evaluatie en de verbeterde aanpak van de operationele security ~\autocite{Herzog}.
 
 Het OSSTMM framework zal in deze bachelorproef dienen als het centrale framework om de testresultaten te evalueren en te vergelijken; zowel de handmatige als de geautomatiseerde aanpak komen aan bod in een gecontroleerde testomgeving.
 De structuur van het framework maakt het mogelijk om de tools en methoden op een objectieve en herhaalbare manier te vergelijken door eerder gedefinieerde parameters.
 
 \section{OSSTMM doelstellingen}
-Het OSSTMM framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten naar een precies methodologisch proces.
+Het OSSTMM framework was ontworpen om de security testen van ad hoc, tool afhankelijke en subjectieve testen om te zetten in een gedetailleerd methodologisch proces.
 De ISECOM definieerde het OSSTMM framework met de volgende doelstellingen:
 
 \begin{itemize}
-  \item standaardiseren: de testen moeten consistent zijn onafhankelijk van wie ze uitvoert;
+  \item standaardiseren: de testen moeten consistent zijn, onafhankelijk van wie ze uitvoert;
   \item reproduceerbaar: de testen zouden dezelfde meetbare resultaten moeten kunnen reproduceren;
   \item neutraal: de testen moeten onafhankelijk zijn van verschillende leveranciers en tools;
-  \item meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren, maar ook de toegankelijkheid en het risico van misbruik kunnen meten ~\autocite{Herzog}.
+  \item meetbare risico: de testen moeten niet enkel de kwetsbaarheden detecteren, maar ook de toegankelijkheid en het risico van misbruik kunnen meten~\autocite{Herzog}.
 \end{itemize}
 
 \section{De opbouw van OSSTMM}
 
 \subsection{OSSTMM secties}
-Het OSSTMM framework bestaat uit vijf verschillende secties waar ik ieder systeem kan onderzoeken.
-Het framework categoriseert de tools en methoden voor de reconnaissance in één of meerdere secties.
+Het OSSTMM framework~\autocite{Herzog} structureert vijf afzonderlijke onderzoeksdomeinen.
+Volgens dit framework worden de tools en methoden voor reconnaissance gecategoriseerd, op basis van hun toepassing in één of meerdere secties.
+
 
 \begin{table}[H]
     \centering
@@ -148,7 +149,7 @@ Deze waarden vormen samen de basis voor het risicoprofiel.
 
 \subsection{Rules of Engagement (RoE)}
 
-Binnen de securitytesting moeten er specifieke regels zijn die de scope en regels definiëren. Binnen het OSSTMM framework is dit Rules of Engagement (RoE).
+Binnen de securitytesting moeten er specifieke regels zijn die de scope definiëren. Binnen het OSSTMM framework is dit Rules of Engagement (RoE).
 
 \begin{itemize}
   \item Welke doel systemen komen in aanmerking voor te testen?
@@ -172,13 +173,13 @@ In deze bachelorproef zijn alle testen in een geïsoleerde, virtuele omgeving ui
 Een vergelijkende analyse zal de toegevoegde waarde van de automatisering bepalen. Binnen het onderzoek verloopt dit in drie stappen:
 
 \begin{itemize}
-    \item een handmatig uitgevoerde reconnaissance-fase, waarbij menselijke testers traditionele methoden toepassen;
+    \item een handmatig uitgevoerde reconnaissancefase, waarbij menselijke testers traditionele methoden toepassen;
     \item een volledig geautomatiseerde aanpak met behulp van de PoC;
     \item een hybride aanpak die handmatige en geautomatiseerde methoden combineert ~\autocite{Herzog}.
 \end{itemize}
 
-De resultaten van de analyse komen tot stand door middel van een vergelijking die gebaseerd is op criteria de Uitvoeringstijd, het CPU-Gebruik, RAV-score en gevonden kwetsbaarheden.
-Het OSSTMM-framework zal hier een gestructureerd kader bieden bij de evaluatie van elke aanpak. Het framework zorgt voor een duidelijke opdeling van de reconnaissance-fase in begrijpbare en afzonderlijke stappen. Dit zal de consistentie en de objectiviteit garanderen tijdens het vergelijkende onderzoek.
+De resultaten van de analyse komen tot stand door middel van een vergelijking die gebaseerd is op criteria de uitvoeringstijd, het CPU-Gebruik, RAV-score en gevonden kwetsbaarheden.
+Het OSSTMM-framework zal hier een gestructureerd kader bieden bij de evaluatie van elke aanpak. Het framework zorgt voor een duidelijke opdeling van de reconnaissancefase in begrijpbare en afzonderlijke stappen. Dit zal de consistentie en de objectiviteit garanderen tijdens het vergelijkende onderzoek.
 
 
 
